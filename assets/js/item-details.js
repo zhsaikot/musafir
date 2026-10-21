@@ -57,11 +57,16 @@ function renderProductDetails() {
 
   // Titles, breadcrumbs & category
   const titleEl = document.getElementById('product-title');
+  const heroTitleEl = document.getElementById('hero-product-title');
   const breadcrumbEl = document.getElementById('breadcrumb-product-title');
   const catEl = document.getElementById('product-category-name');
+  const heroCatEl = document.getElementById('hero-category-name');
+
   if (titleEl) titleEl.textContent = title;
+  if (heroTitleEl) heroTitleEl.textContent = title;
   if (breadcrumbEl) breadcrumbEl.textContent = title;
   if (catEl) catEl.textContent = categoryName;
+  if (heroCatEl && categoryName) heroCatEl.textContent = categoryName;
 
   // Prices
   const priceEl = document.getElementById('product-price');

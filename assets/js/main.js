@@ -656,6 +656,69 @@ window.handleAddToCart = async function(productId, qty = 1) {
 };
 
 /* ==========================================================================
+   Global Direct WhatsApp "Buy Now" Helper
+   ========================================================================== */
+window.handleDirectBuyNow = async function(productId) {
+  let item = null;
+  if (window.musafirDB && window.musafirDB.getItemById) {
+    item = await window.musafirDB.getItemById(productId);
+  }
+  if (!item && window.SEED_PRODUCTS) {
+    item = window.SEED_PRODUCTS.find(p => p.id === productId);
+  }
+  if (!item) {
+    console.error("Product not found for Buy Now:", productId);
+    return;
+  }
+
+  const isOutOfStock = item.inStock === false || (typeof item.stockQuantity === 'number' && item.stockQuantity <= 0);
+  const lang = (window.i18n && window.i18n.getLang) ? window.i18n.getLang() : 'en';
+  const title = lang === 'bn' ? (item.title_bn || item.title_en) : (item.title_en || item.title_bn);
+  const price = item.price ? item.price.toLocaleString() : '0';
+  const phone = (window.STORE_CONFIG && window.STORE_CONFIG.whatsappNumber) || "8801700000000";
+  
+  // Clean product URL
+  const itemUrl = `${window.location.origin}${window.location.pathname.replace(/\/[^/]*$/, '')}/item-details.html?id=${encodeURIComponent(item.id)}`;
+
+  let message = "";
+  if (isOutOfStock) {
+    if (lang === 'bn') {
+      message = `*সালামু আলাইকুম MUSAFIR, আমি এই পণ্যটি প্রি-অর্ডার (Pre-order) করতে চাই:*\n\n` +
+                `• পণ্য: *${title}*\n` +
+                `• মূল্য: *৳${price}*\n` +
+                `• প্রোডাক্ট লিঙ্ক: ${itemUrl}\n\n` +
+                `পণ্যটি কবে স্টকে আসবে অনুগ্রহ করে জানাবেন? জাযাকাল্লাহু খাইরান!`;
+    } else {
+      message = `*Salam MUSAFIR, I would like to pre-order this out-of-stock product:*\n\n` +
+                `• Product: *${title}*\n` +
+                `• Price: *৳${price}*\n` +
+                `• Product Link: ${itemUrl}\n\n` +
+                `Please let me know when it will be restocked. Jazakallahu Khair!`;
+    }
+  } else {
+    if (lang === 'bn') {
+      message = `*সালামু আলাইকুম MUSAFIR, আমি এই পণ্যটি সরাসরি কিনতে চাই (Buy Now):*\n\n` +
+                `• পণ্য: *${title}*\n` +
+                `• মূল্য: *৳${price}*\n` +
+                `• পরিমাণ: *১ টি*\n` +
+                `• প্রোডাক্ট লিঙ্ক: ${itemUrl}\n\n` +
+                `দয়া করে আমার ডেলিভারির তথ্য নিয়ে অর্ডারটি কনফার্ম করুন। জাযাকাল্লাহু খাইরান!`;
+    } else {
+      message = `*Salam MUSAFIR, I would like to buy this product directly (Buy Now):*\n\n` +
+                `• Product: *${title}*\n` +
+                `• Price: *৳${price}*\n` +
+                `• Quantity: *1 item*\n` +
+                `• Product Link: ${itemUrl}\n\n` +
+                `Please proceed with my delivery details to confirm the order. Jazakallahu Khair!`;
+    }
+  }
+
+  showToast(lang === 'bn' ? 'হোয়াটসঅ্যাপে রিডাইরেক্ট করা হচ্ছে...' : 'Redirecting to WhatsApp...', 'info');
+  const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
+};
+
+/* ==========================================================================
    Home Featured Products Dynamic Renderer ("Popular Picks")
    ========================================================================== */
 async function renderHomeFeatured() {
@@ -724,14 +787,25 @@ async function renderHomeFeatured() {
           </div>
           <div class="mt-3 sm:mt-4">
             ${isOutOfStock ? `
-              <button disabled class="w-full py-2 sm:py-2.5 px-2.5 sm:px-4 rounded-lg text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200">
-                <span>${lang === 'bn' ? 'স্টক শেষ' : 'Out of Stock'}</span>
-              </button>
+              <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+                <button disabled class="py-2 sm:py-2.5 px-2 rounded-lg text-[11px] sm:text-xs font-semibold flex items-center justify-center bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200">
+                  <span>${lang === 'bn' ? 'স্টক শেষ' : 'Out of Stock'}</span>
+                </button>
+                <button onclick="handleDirectBuyNow('${item.id}')" class="py-2 sm:py-2.5 px-2 rounded-lg text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1 bg-[#25D366]/20 text-[#171717] hover:bg-[#25D366] hover:text-white border border-[#25D366]/40 transition" title="Pre-order via WhatsApp">
+                  <span>${lang === 'bn' ? 'প্রি-অর্ডার' : 'Pre-order'}</span>
+                </button>
+              </div>
             ` : `
-              <button onclick="handleAddToCart('${item.id}')" class="btn-navy w-full py-2 sm:py-2.5 px-2.5 sm:px-4 rounded-lg text-xs sm:text-sm font-medium flex items-center justify-center gap-1.5 hover:bg-[#030609]">
-                <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                <span>${lang === 'bn' ? 'কার্টে যোগ করুন' : 'Add to Cart'}</span>
-              </button>
+              <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+                <button onclick="handleAddToCart('${item.id}')" class="btn-navy py-2 sm:py-2.5 px-1.5 sm:px-2 rounded-lg text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1 hover:bg-[#030609] transition" title="Add to Cart">
+                  <svg class="w-3.5 h-3.5 text-[#D6A63A] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                  <span class="truncate">${lang === 'bn' ? 'কার্ট' : 'Cart'}</span>
+                </button>
+                <button onclick="handleDirectBuyNow('${item.id}')" class="py-2 sm:py-2.5 px-1.5 sm:px-2 rounded-lg text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1 bg-[#25D366] hover:bg-[#20ba59] text-white shadow-sm transition" title="Buy Now via WhatsApp">
+                  <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.087-.179.182-.077.357.101.174.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+                  <span class="truncate">${lang === 'bn' ? 'Buy Now' : 'Buy Now'}</span>
+                </button>
+              </div>
             `}
           </div>
         </div>

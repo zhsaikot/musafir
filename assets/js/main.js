@@ -154,8 +154,16 @@ function initCartDrawer() {
   const waCheckoutBtn = document.getElementById('cart-wa-checkout-btn');
 
   const openCart = () => {
+    // If mobile menu drawer is open, close it
+    const mobileDrawer = document.getElementById('mobile-menu-drawer');
+    if (mobileDrawer && !mobileDrawer.classList.contains('hidden')) {
+      mobileDrawer.querySelector('.drawer-content')?.classList.add('-translate-x-full');
+      setTimeout(() => mobileDrawer.classList.add('hidden'), 200);
+    }
+
     renderCartDrawerItems();
     cartDrawer?.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
     setTimeout(() => {
       cartDrawer?.querySelector('.drawer-content')?.classList.remove('translate-x-full');
     }, 10);
@@ -163,6 +171,7 @@ function initCartDrawer() {
 
   const closeCart = () => {
     cartDrawer?.querySelector('.drawer-content')?.classList.add('translate-x-full');
+    document.body.classList.remove('overflow-hidden');
     setTimeout(() => {
       cartDrawer?.classList.add('hidden');
     }, 300);
@@ -171,6 +180,13 @@ function initCartDrawer() {
   cartTriggerBtns.forEach(btn => btn.addEventListener('click', openCart));
   closeCartBtn?.addEventListener('click', closeCart);
   cartDrawer?.querySelector('.drawer-backdrop')?.addEventListener('click', closeCart);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cartDrawer && !cartDrawer.classList.contains('hidden')) {
+      closeCart();
+    }
+  });
 
   // WhatsApp Checkout button
   waCheckoutBtn?.addEventListener('click', () => {
@@ -349,20 +365,36 @@ function initSearchModal() {
   const searchModal = document.getElementById('search-modal');
   const closeSearchBtn = document.getElementById('close-search-btn');
   const searchInput = document.getElementById('site-search-input');
-  const searchResultsContainer = document.getElementById('search-results-list');
+  const searchResultsContainer = document.getElementById('search-results-list') || document.getElementById('search-results-container');
 
   const openSearch = () => {
+    // If mobile menu drawer is open, close it
+    const mobileDrawer = document.getElementById('mobile-menu-drawer');
+    if (mobileDrawer && !mobileDrawer.classList.contains('hidden')) {
+      mobileDrawer.querySelector('.drawer-content')?.classList.add('-translate-x-full');
+      setTimeout(() => mobileDrawer.classList.add('hidden'), 200);
+    }
+
     searchModal?.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
     searchInput?.focus();
   };
 
   const closeSearch = () => {
     searchModal?.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
   };
 
   searchTriggers.forEach(btn => btn.addEventListener('click', openSearch));
   closeSearchBtn?.addEventListener('click', closeSearch);
   searchModal?.querySelector('.modal-backdrop')?.addEventListener('click', closeSearch);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchModal && !searchModal.classList.contains('hidden')) {
+      closeSearch();
+    }
+  });
 
   // Live filter
   searchInput?.addEventListener('input', async (e) => {

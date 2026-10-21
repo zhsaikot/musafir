@@ -254,7 +254,7 @@ window.submitWhatsAppOrder = (event) => {
     if (notes) message += `• বিশেষ নোট: ${notes}\n`;
     message += `\nঅনুগ্রহ করে অর্ডারটি দ্রুত কনফার্ম করুন। জাযাকাল্লাহু খাইরান!`;
   } else {
-    message += `*Salam, I want to place an order from MUSAFIR:*\n`;
+    message += `*Assalamualaikum, I want to place an order from MUSAFIR:*\n`;
     message += `--------------------------------------\n`;
     cart.forEach((item, index) => {
       const title = item.title_en || item.title_bn;
@@ -547,7 +547,7 @@ function initAuthModal() {
       const name = user.displayName || user.email.split('@')[0];
       if (userName) userName.textContent = name;
       if (userEmail) userEmail.textContent = user.email;
-      if (authHeading) authHeading.textContent = `Salam, ${name}!`;
+      if (authHeading) authHeading.textContent = `Assalamualaikum, ${name}!`;
       if (authSubheading) authSubheading.textContent = 'You are currently signed in to your Musafir account';
 
       const isGoogle = user.providerData && user.providerData.some(p => p.providerId === 'google.com');
@@ -689,7 +689,7 @@ window.handleDirectBuyNow = async function(productId) {
                 `• প্রোডাক্ট লিঙ্ক: ${itemUrl}\n\n` +
                 `পণ্যটি কবে স্টকে আসবে অনুগ্রহ করে জানাবেন? জাযাকাল্লাহু খাইরান!`;
     } else {
-      message = `*Salam MUSAFIR, I would like to pre-order this out-of-stock product:*\n\n` +
+      message = `*Assalamualaikum MUSAFIR, I would like to pre-order this out-of-stock product:*\n\n` +
                 `• Product: *${title}*\n` +
                 `• Price: *৳${price}*\n` +
                 `• Product Link: ${itemUrl}\n\n` +
@@ -704,7 +704,7 @@ window.handleDirectBuyNow = async function(productId) {
                 `• প্রোডাক্ট লিঙ্ক: ${itemUrl}\n\n` +
                 `দয়া করে আমার ডেলিভারির তথ্য নিয়ে অর্ডারটি কনফার্ম করুন। জাযাকাল্লাহু খাইরান!`;
     } else {
-      message = `*Salam MUSAFIR, I would like to buy this product directly (Buy Now):*\n\n` +
+      message = `*Assalamualaikum MUSAFIR, I would like to buy this product directly (Buy Now):*\n\n` +
                 `• Product: *${title}*\n` +
                 `• Price: *৳${price}*\n` +
                 `• Quantity: *1 item*\n` +

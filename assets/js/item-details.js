@@ -246,7 +246,7 @@ window.orderDetailViaWhatsApp = () => {
             `• সর্বমোট মূল্য: *৳${total.toLocaleString()}*\n\n` +
             `দয়া করে আমার ডেলিভারি ও পেমেন্ট কনফার্মেশনের জন্য যোগাযোগ করুন।`;
     } else {
-      msg = `*Salam MUSAFIR, I would like to order:*\n\n` +
+      msg = `*Assalamualaikum MUSAFIR, I would like to order:*\n\n` +
             `• Product: *${title}*\n` +
             `• Quantity: *${selectedQuantity}*\n` +
             `• Unit Price: ৳${currentItem.price.toLocaleString()}\n` +
@@ -261,7 +261,7 @@ window.orderDetailViaWhatsApp = () => {
             `• আনুমানিক মূল্য: ৳${currentItem.price.toLocaleString()}\n\n` +
             `পণ্যটি কবে স্টকে আসবে অনুগ্রহ করে জানাবেন? জাযাকাল্লাহু খাইরান!`;
     } else {
-      msg = `*Salam MUSAFIR, I would like to pre-order this out-of-stock item:*\n\n` +
+      msg = `*Assalamualaikum MUSAFIR, I would like to pre-order this out-of-stock item:*\n\n` +
             `• Product: *${title}*\n` +
             `• Price: ৳${currentItem.price.toLocaleString()}\n\n` +
             `Please let me know when it will be restocked. Jazakallahu Khair!`;

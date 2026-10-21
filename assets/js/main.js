@@ -294,7 +294,7 @@ window.submitWhatsAppOrder = (event) => {
 
   let message = "";
   if (lang === 'bn') {
-    message += `*সালামু আলাইকুম, আমি MUSAFIR থেকে অর্ডার করতে চাই:*\n`;
+    message += `*আসসালামু আলাইকুম, আমি MUSAFIR থেকে অর্ডার করতে চাই:*\n`;
     message += `--------------------------------------\n`;
     cart.forEach((item, index) => {
       const title = item.title_bn || item.title_en;
@@ -740,7 +740,7 @@ window.handleDirectBuyNow = async function(productId) {
   let message = "";
   if (isOutOfStock) {
     if (lang === 'bn') {
-      message = `*সালামু আলাইকুম MUSAFIR, আমি এই পণ্যটি প্রি-অর্ডার (Pre-order) করতে চাই:*\n\n` +
+      message = `*আসসালামু আলাইকুম MUSAFIR, আমি এই পণ্যটি প্রি-অর্ডার (Pre-order) করতে চাই:*\n\n` +
                 `• পণ্য: *${title}*\n` +
                 `• মূল্য: *৳${price}*\n` +
                 `• প্রোডাক্ট লিঙ্ক: ${itemUrl}\n\n` +
@@ -754,7 +754,7 @@ window.handleDirectBuyNow = async function(productId) {
     }
   } else {
     if (lang === 'bn') {
-      message = `*সালামু আলাইকুম MUSAFIR, আমি এই পণ্যটি সরাসরি কিনতে চাই (Buy Now):*\n\n` +
+      message = `*আসসালামু আলাইকুম MUSAFIR, আমি এই পণ্যটি সরাসরি কিনতে চাই (Buy Now):*\n\n` +
                 `• পণ্য: *${title}*\n` +
                 `• মূল্য: *৳${price}*\n` +
                 `• পরিমাণ: *১ টি*\n` +

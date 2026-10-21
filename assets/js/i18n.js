@@ -264,10 +264,10 @@ class I18nManager {
       }
     });
 
-    // Update language switch button text
+    // Update language switch button text (Compact luxury switch)
     const langBtnTexts = document.querySelectorAll('.lang-btn-text');
     langBtnTexts.forEach(btn => {
-      btn.textContent = this.currentLang === 'en' ? 'বাংলা' : 'EN';
+      btn.textContent = this.currentLang === 'en' ? 'বাং' : 'EN';
     });
 
     // Toggle Bengali font class on body

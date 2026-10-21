@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — MUSAFIR Islamic Lifestyle</title>
+  <link rel="icon" type="image/webp" href="assets/images/MUSAFIR BRAND Icon.webp">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#FCFBF7',
+              100: '#F7F1E4',
+              500: '#D6A63A',
+              800: '#171717',
+              900: '#081018',
+              950: '#030609'
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            bn: ['Hind Siliguri', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#FCFBF7] text-[#171717] min-h-screen flex flex-col font-sans">
+
+  <!-- Header -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-40 bg-[#081018] text-white transition-all duration-300 border-b border-[#D6A63A]/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/images/MUSAFIR-Brand-Logo-White.png" alt="MUSAFIR" class="h-10 sm:h-12 w-auto object-contain">
+      </a>
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide absolute left-1/2 -translate-x-1/2">
+        <a href="index.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_home">Home</a>
+        <a href="shop.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_shop">Shop</a>
+        <a href="about.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_about">About</a>
+        <a href="contact.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <div class="flex items-center space-x-4 sm:space-x-5">
+        <button class="lang-toggle-btn text-xs font-semibold tracking-wider text-gray-300 hover:text-[#D6A63A] transition flex items-center gap-1" title="Switch Language">
+          <span class="lang-btn-text">বাং</span>
+        </button>
+        <button class="open-search-btn p-1.5 text-gray-300 hover:text-[#D6A63A] transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+        <button class="open-auth-btn p-1.5 text-gray-300 hover:text-[#D6A63A] transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></button>
+        <button class="open-cart-btn relative p-1.5 text-gray-300 hover:text-[#D6A63A] transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-count-badge absolute -top-1 -right-1 bg-[#D6A63A] text-[#081018] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden p-1.5 text-gray-300 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow pt-20">
+    <!-- Hero Banner -->
+    <section class="relative py-16 sm:py-20 bg-[#081018] text-white overflow-hidden text-center">
+      <div class="absolute inset-0 opacity-20">
+        <img src="assets/images/Hero-Banner-Background-Image.webp" alt="Background Pattern" class="w-full h-full object-cover">
+      </div>
+      <div class="relative z-10 max-w-4xl mx-auto px-4">
+        <p class="text-xs font-semibold tracking-[0.25em] text-[#D6A63A] uppercase mb-2">TRUST & INTEGRITY</p>
+        <h1 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-3">Privacy Policy</h1>
+        <p class="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          আপনার ব্যক্তিগত তথ্যের নিরাপত্তা ও আমানত রক্ষা করা আমাদের দায়িত্ব। জানুন মুসাফির কীভাবে আপনার তথ্য সংগ্রহ, সংরক্ষণ ও সুরক্ষিত রাখে।
+        </p>
+      </div>
+    </section>
+
+    <!-- Policy Content Section -->
+    <section class="py-14 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Trust Pillars -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="p-5 rounded-2xl bg-white border border-[#DED7C8] shadow-sm text-center">
+          <div class="w-12 h-12 rounded-xl bg-[#F7F1E4] text-[#D6A63A] flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+            🔒
+          </div>
+          <h4 class="font-bold text-base text-[#171717] mb-1">নিরাপদ ডেটা</h4>
+          <p class="text-xs text-gray-600">গুগল ফায়ারবেস এনক্রিপশনের মাধ্যমে সম্পূর্ণ সুরক্ষিত সংরক্ষণ</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-[#DED7C8] shadow-sm text-center">
+          <div class="w-12 h-12 rounded-xl bg-[#F7F1E4] text-[#D6A63A] flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+            🚫
+          </div>
+          <h4 class="font-bold text-base text-[#171717] mb-1">কোনো স্প্যাম বা বিক্রি নয়</h4>
+          <p class="text-xs text-gray-600">আমরা কখনো কারো কাছে গ্রাহকের তথ্য বিক্রি বা হস্তান্তর করি না</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-[#DED7C8] shadow-sm text-center">
+          <div class="w-12 h-12 rounded-xl bg-[#F7F1E4] text-[#D6A63A] flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+            ✨
+          </div>
+          <h4 class="font-bold text-base text-[#171717] mb-1">আমানতের নিশ্চয়তা</h4>
+          <p class="text-xs text-gray-600">ইসলামিক মূল্যবোধ ও বিশ্বস্ততার সর্বোচ্চ চর্চা</p>
+        </div>
+      </div>
+
+      <!-- Main Policy Body -->
+      <div class="bg-white rounded-2xl border border-[#DED7C8] p-6 sm:p-10 shadow-sm space-y-8 text-gray-800 leading-relaxed text-sm sm:text-base">
+        
+        <!-- Section 1 -->
+        <div>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-[#171717] mb-3 flex items-center gap-2">
+            <span class="text-[#D6A63A]">১.</span> ভূমিকা ও আমানত (Introduction)
+          </h2>
+          <p class="text-gray-600 mb-3">
+            <strong>মুসাফির (MUSAFIR)</strong> এ আমরা বিশ্বাস করি আপনার ব্যক্তিগত তথ্য একটি মূল্যবান আমানত। আমরা আমাদের গ্রাহক এবং শুভানুধ্যায়ীদের তথ্যের সর্বোচ্চ নিরাপত্তা বজায় রাখতে প্রতিশ্রুতিবদ্ধ। এই পলিসিতে বিস্তারিত ব্যাখ্যা করা হয়েছে কীভাবে আমাদের প্ল্যাটফর্ম ব্যবহারের সময় আপনার তথ্য সংগ্রহ, সংরক্ষণ ও প্রক্রিয়াকরণ করা হয়।
+          </p>
+        </div>
+
+        <hr class="border-[#DED7C8]">
+
+        <!-- Section 2 -->
+        <div>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-[#171717] mb-3 flex items-center gap-2">
+            <span class="text-[#D6A63A]">২.</span> যেসকল তথ্য আমরা সংগ্রহ করি (Information We Collect)
+          </h2>
+          <p class="text-gray-600 mb-3">অর্ডার নির্বিঘ্নে সম্পন্ন করতে ও উন্নত সেবা প্রদানে আমরা নিম্নোক্ত তথ্যসমূহ সংগ্রহ করি:</p>
+          <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
+            <li><strong>অর্ডার ও যোগাযোগের তথ্য:</strong> আপনার নাম, মোবাইল ফোন নম্বর, সম্পূর্ণ ডেলিভারি ঠিকানা এবং ইমেইল অ্যাড্রেস।</li>
+            <li><strong>অ্যাকাউন্ট তথ্য:</strong> আপনি যখন "Continue with Google" অথবা ইমেইল দিয়ে সাইন ইন করেন, তখন নিরাপদ সেশনের জন্য আপনার নাম, ইমেইল এবং প্রোফাইল তথ্য।</li>
+            <li><strong>কার্ট ও অর্ডারের ইতিহাস:</strong> আপনার পছন্দের আইটেম, কার্ট লিস্ট এবং পূর্ববর্তী ক্রয়ের বিবরণ।</li>
+            <li><strong>ব্রাউজিং ও ডিভাইস তথ্য:</strong> ওয়েবসাইট দ্রুত লোড এবং মোবাইল রেসপনসিভনেস নিশ্চিত করতে আইপি ঠিকানা ও ব্রাউজারের ধরণ।</li>
+          </ul>
+        </div>
+
+        <hr class="border-[#DED7C8]">
+
+        <!-- Section 3 -->
+        <div>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-[#171717] mb-3 flex items-center gap-2">
+            <span class="text-[#D6A63A]">৩.</span> তথ্যের সঠিক ব্যবহার (How We Use Your Information)
+          </h2>
+          <div class="space-y-2 text-gray-700 text-sm">
+            <p>✓ আপনার অর্ডার প্রসেসিং, প্যাকিং ও দ্রুত ঠিকানায় ডেলিভারি নিশ্চিত করা।</p>
+            <p>✓ অর্ডারের স্ট্যাটাস বা কনফার্মেশনের জন্য এসএমএস বা হোয়াটসঅ্যাপে দ্রুত যোগাযোগ।</p>
+            <p>✓ পণ্যের কোয়ালিটি বা আফটার-সেলস সাপোর্টে তাৎক্ষণিক সহায়তা প্রদান।</p>
+            <p>✓ অ্যাকাউন্টের নিরাপত্তা নিশ্চিতকরণ ও অননুমোদিত প্রতারণা প্রতিরোধ।</p>
+          </div>
+        </div>
+
+        <hr class="border-[#DED7C8]">
+
+        <!-- Section 4 -->
+        <div>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-[#171717] mb-3 flex items-center gap-2">
+            <span class="text-[#D6A63A]">৪.</span> তথ্য শেয়ারিং নীতিমালা (Third-Party Sharing)
+          </h2>
+          <p class="text-gray-600 mb-3">
+            আমরা কোনো অবস্থাতেই আপনার নাম, মোবাইল নম্বর কিংবা ঠিকানা কোনো বাণিজ্যিক প্রতিষ্ঠান বা তৃতীয় পক্ষের নিকট বিক্রি, ভাড়া কিংবা বিনিময় করি না। শুধুমাত্র ডেলিভারির প্রয়োজনে বিশ্বস্ত কুরিয়ার পার্টনারদের (যেমন: Steadfast / Pathao Courier) সাথে আপনার নাম, ফোন নম্বর ও ডেলিভারি ঠিকানা শেয়ার করা হয়।
+          </p>
+        </div>
+
+        <hr class="border-[#DED7C8]">
+
+        <!-- Section 5 -->
+        <div>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-[#171717] mb-3 flex items-center gap-2">
+            <span class="text-[#D6A63A]">৫.</span> কুকিজ ও লোকাল স্টোরেজ (Cookies & Local Storage)
+          </h2>
+          <p class="text-gray-600 text-sm">
+            ওয়েবসাইটে আপনার ভিজিটকে মসৃণ ও আরামদায়ক করতে আমরা ব্রাউজার লোকাল স্টোরেজ ব্যবহার করি। এর ফলে আপনি পেজ রিফ্রেশ করলেও কার্টের পণ্য মুছে যায় না এবং আপনার পছন্দের ভাষা (ইংরেজি/বাংলা) সংরক্ষিত থাকে।
+          </p>
+        </div>
+
+        <hr class="border-[#DED7C8]">
+
+        <!-- Section 6 -->
+        <div>
+          <h2 class="text-xl sm:text-2xl font-serif font-bold text-[#171717] mb-3 flex items-center gap-2">
+            <span class="text-[#D6A63A]">৬.</span> আপনার অধিকার ও নিয়ন্ত্রণ (Your Rights)
+          </h2>
+          <p class="text-gray-600 text-sm mb-3">
+            আপনার অ্যাকাউন্টের যেকোনো তথ্য পরিবর্তন, হালনাগাদ বা ডাটাবেজ থেকে মুছে ফেলার পূর্ণ অধিকার আপনার রয়েছে। এ সংক্রান্ত যেকোনো প্রয়োজনে আমাদের কাস্টমার কেয়ারে যোগাযোগ করলেই সাথে সাথে ব্যবস্থা নেওয়া হবে।
+          </p>
+        </div>
+
+        <hr class="border-[#DED7C8]">
+
+        <!-- Support Info Box -->
+        <div class="bg-[#FCFBF7] rounded-xl p-5 border border-[#DED7C8] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h4 class="font-bold text-base text-[#171717]">গোপনীয়তা নিয়ে কোনো প্রশ্ন আছে?</h4>
+            <p class="text-xs text-gray-600 mt-1">ইমেইল করুন: zhsaikot@gmail.com অথবা কল করুন: 01700-000000</p>
+          </div>
+          <a href="contact.html" class="px-5 py-2.5 rounded-lg bg-[#081018] text-[#D6A63A] font-semibold text-xs border border-[#D6A63A]/40 hover:bg-black transition">
+            <span>যোগাযোগ ফর্ম</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#030609] text-white pt-16 pb-12 border-t border-[#D6A63A]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+        <!-- Col 1: Brand Info -->
+        <div>
+          <a href="index.html" class="inline-block mb-4">
+            <img src="assets/images/musafir-logo.webp" alt="MUSAFIR Logo" class="h-12 sm:h-14 w-auto object-contain">
+          </a>
+          <p class="text-xs text-[#D6A63A] tracking-[0.2em] font-semibold uppercase mb-3" data-i18n="footer_tagline">FAITH • REMEMBRANCE • PURPOSE</p>
+          <p class="text-sm text-gray-400 leading-relaxed" data-i18n="footer_desc">Musafir is dedicated to reviving Islamic values in modern daily living through pure, aesthetic, and meaningful lifestyle products.</p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-[#D6A63A] mb-4" data-i18n="footer_quick_links">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li><a href="index.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_home">Home</a></li>
+            <li><a href="shop.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_shop">Shop</a></li>
+            <li><a href="about.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_about">About</a></li>
+            <li><a href="contact.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Policies -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-[#D6A63A] mb-4" data-i18n="footer_policies">Policies</h4>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li><a href="return-policy.html" class="hover:text-[#D6A63A] transition" data-i18n="footer_delivery_info">Return & Refund Policy</a></li>
+            <li><a href="privacy-policy.html" class="text-[#D6A63A] font-semibold hover:underline transition" data-i18n="footer_privacy">Privacy Policy</a></li>
+            <li><a href="terms-and-conditions.html" class="hover:text-[#D6A63A] transition" data-i18n="footer_terms">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Customer Care & Socials -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-[#D6A63A] mb-4" data-i18n="footer_customer_service">Customer Care</h4>
+          <p class="text-sm text-gray-300 mb-2">Dhaka, Bangladesh</p>
+          <p class="text-sm text-[#D6A63A] font-semibold mb-4">Hotline: 01700-000000</p>
+          <div class="flex items-center space-x-3">
+            <a href="https://www.facebook.com/profile.php?id=61564925019564" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-900 border border-[#D6A63A]/30 flex items-center justify-center text-gray-300 hover:text-[#D6A63A] transition" title="Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/musafir.zh" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-900 border border-[#D6A63A]/30 flex items-center justify-center text-gray-300 hover:text-[#D6A63A] hover:border-[#D6A63A] transition" title="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <p data-i18n="footer_copyright">© 2026 MUSAFIR. All rights reserved.</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-gray-400">
+          <a href="return-policy.html" class="hover:text-[#D6A63A] transition" data-i18n="footer_delivery_info">Return & Refund Policy</a>
+          <span class="text-gray-700">•</span>
+          <a href="privacy-policy.html" class="text-[#D6A63A] hover:underline transition" data-i18n="footer_privacy">Privacy Policy</a>
+          <span class="text-gray-700">•</span>
+          <a href="terms-and-conditions.html" class="hover:text-[#D6A63A] transition" data-i18n="footer_terms">Terms & Conditions</a>
+        </div>
+        <p class="text-gray-400">Design & Developed by <a href="https://mdziaulhasan.com/" target="_blank" class="text-[#D6A63A] hover:underline font-medium">MD. Ziaul Hasan</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase App & Services (v10 Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/seed-data.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- AUTH & FIREBASE USER MODAL -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4 z-10 pointer-events-none">
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 sm:p-8 border border-[#DED7C8] relative pointer-events-auto max-h-[92vh] overflow-y-auto">
+        <button id="close-auth-btn" onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <div class="text-center mb-6">
+          <img src="assets/images/musafir-logo-dark.webp" alt="MUSAFIR" class="h-14 sm:h-16 w-auto mx-auto mb-3 object-contain">
+          <h3 id="auth-modal-heading" class="text-xl font-serif font-bold text-[#171717]" data-i18n="auth_title">Welcome to Musafir</h3>
+          <p id="auth-modal-subheading" class="text-xs text-gray-500 mt-1" data-i18n="auth_subtitle">Access your orders, wishlist, and exclusive Islamic offerings</p>
+        </div>
+        <div id="auth-logged-in-view" class="hidden text-center space-y-4">
+          <div class="w-20 h-20 rounded-full mx-auto border-2 border-[#D6A63A] p-0.5 overflow-hidden bg-gray-100 flex items-center justify-center shadow-md">
+            <img id="auth-user-photo" src="" alt="User Avatar" class="w-full h-full object-cover hidden">
+            <span id="auth-user-initial" class="text-2xl font-serif font-bold text-[#D6A63A]">M</span>
+          </div>
+          <div>
+            <h4 id="auth-user-name" class="font-bold text-base text-[#171717]">User Name</h4>
+            <p id="auth-user-email" class="text-xs text-gray-500">user@email.com</p>
+            <span id="auth-user-provider" class="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#F7F1E4] text-[#D6A63A] border border-[#DED7C8]">Signed In via Google</span>
+          </div>
+          <div class="pt-2 flex flex-col gap-2">
+            <a href="shop.html" onclick="closeAuthModal()" class="w-full py-2.5 px-4 rounded-lg bg-[#F7F1E4] hover:bg-[#D6A63A]/20 text-[#081018] font-semibold text-xs transition flex items-center justify-center gap-1.5">
+              <span>🛍️ Continue Shopping (কেনাকাটা করুন)</span>
+            </a>
+            <button id="auth-signout-btn" onclick="handleFirebaseSignOut()" class="w-full py-2.5 px-4 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 font-semibold text-xs transition">
+              Sign Out (লগআউট)
+            </button>
+          </div>
+        </div>
+        <div id="auth-logged-out-view">
+          <div class="mb-4">
+            <button id="google-signin-btn" class="w-full py-3.5 px-4 border border-[#D6A63A]/40 rounded-xl shadow-sm flex items-center justify-center gap-3 bg-white hover:bg-[#FCFBF7] transition text-sm font-bold text-gray-800 hover:border-[#D6A63A] group">
+              <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
+                <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/>
+                <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/>
+                <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.8s.2-2.1.4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/>
+                <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16C3.7 20.4 7.5 23 12 23z"/>
+              </svg>
+              <span>Continue with Google (গুগল দিয়ে প্রবেশ)</span>
+            </button>
+            <p class="text-[11px] text-gray-400 text-center mt-2">গ্রাহক হিসেবে এক ক্লিকে অর্ডার ট্র্যাকিং ও কার্ট সংরক্ষণ করতে গুগল দিয়ে লগইন করুন।</p>
+          </div>
+          <div class="relative my-4">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+            <div class="relative flex justify-center text-xs uppercase"><span class="bg-white px-2 text-gray-400 font-semibold" data-i18n="auth_or">OR</span></div>
+          </div>
+          <div class="flex border-b border-gray-200 mb-4 text-xs font-bold">
+            <button type="button" id="tab-auth-login" onclick="switchAuthTab('login')" class="flex-1 pb-2 border-b-2 border-[#D6A63A] text-[#171717] transition text-center">
+              Sign In (লগইন)
+            </button>
+            <button type="button" id="tab-auth-register" onclick="switchAuthTab('register')" class="flex-1 pb-2 border-b-2 border-transparent text-gray-400 hover:text-gray-700 transition text-center">
+              Create Account (নিবন্ধন)
+            </button>
+          </div>
+          <form id="auth-login-form" onsubmit="handleEmailPasswordLogin(event)" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_email">Email Address</label>
+              <input type="email" id="login-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-semibold text-gray-700" data-i18n="auth_password">Password</label>
+                <button type="button" onclick="switchAuthTab('forgot')" class="text-[11px] text-[#D6A63A] hover:underline font-medium">Forgot Password?</button>
+              </div>
+              <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <button type="submit" class="btn-navy w-full py-3 rounded-lg text-sm font-semibold shadow hover:bg-black transition flex items-center justify-center gap-2">
+              <span data-i18n="auth_login_btn">Sign In</span>
+            </button>
+          </form>
+          <form id="auth-register-form" onsubmit="handleEmailPasswordRegister(event)" class="space-y-3.5 hidden">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name (পূর্ণ নাম)</label>
+              <input type="text" id="reg-name" required placeholder="MD. Ziaul Hasan" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_email">Email Address</label>
+              <input type="email" id="reg-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_password">Password (পাসওয়ার্ড)</label>
+              <input type="password" id="reg-password" required minlength="6" placeholder="কমপক্ষে ৬ ডিজিটের পাসওয়ার্ড" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <button type="submit" class="btn-navy w-full py-3 rounded-lg text-sm font-semibold shadow hover:bg-black transition flex items-center justify-center gap-2">
+              <span data-i18n="auth_register_btn">Create Account</span>
+            </button>
+          </form>
+          <form id="auth-forgot-form" onsubmit="handleForgotPassword(event)" class="space-y-3.5 hidden">
+            <p class="text-xs text-gray-500 mb-2">আপনার অ্যাকাউন্টের ইমেইল ঠিকানা দিলে পাসওয়ার্ড রিসেট করার লিঙ্ক পাঠিয়ে দেওয়া হবে।</p>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_email">Email Address</label>
+              <input type="email" id="forgot-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <button type="submit" class="btn-navy w-full py-3 rounded-lg text-sm font-semibold shadow hover:bg-black transition flex items-center justify-center gap-2">
+              <span>Send Reset Link (লিংক পাঠান)</span>
+            </button>
+            <div class="text-center">
+              <button type="button" onclick="switchAuthTab('login')" class="text-xs text-[#D6A63A] hover:underline font-semibold">লগইন স্ক্রিনে ফিরে যান</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART SLIDE-OVER DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="drawer-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="drawer-content fixed top-0 right-0 w-full max-w-md h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+      <div class="p-5 border-b border-[#DED7C8] flex items-center justify-between bg-[#081018] text-white">
+        <h3 class="text-base font-semibold" data-i18n="cart_title">Shopping Cart</h3>
+        <button id="close-cart-btn" class="text-gray-300 hover:text-white p-1"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+      <div id="cart-empty-message" class="flex-1 flex flex-col items-center justify-center p-8 text-center text-gray-400">
+        <p class="text-base font-medium text-gray-600 mb-2" data-i18n="cart_empty">Your cart is empty</p>
+      </div>
+      <div id="cart-drawer-footer" class="p-5 border-t border-[#DED7C8] bg-[#FCFBF7] hidden">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm text-gray-600 font-medium" data-i18n="cart_subtotal">Subtotal</span>
+          <span id="cart-drawer-subtotal" class="text-lg font-bold text-[#171717]">৳ 0</span>
+        </div>
+        <div class="space-y-2.5">
+          <button id="cart-wa-checkout-btn" class="w-full py-3 px-4 rounded-lg bg-[#25D366] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-md">
+            <span data-i18n="cart_checkout_wa">Order via WhatsApp</span>
+          </button>
+          <a href="cart.html" class="w-full py-3 px-4 rounded-lg btn-navy text-center block font-semibold text-sm">
+            <span data-i18n="cart_checkout_direct">Proceed to Checkout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div id="search-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="fixed top-24 left-1/2 -translate-x-1/2 w-full max-w-2xl px-4 z-10">
+      <div class="bg-white rounded-2xl shadow-2xl p-4 border border-[#DED7C8]">
+        <div class="flex items-center gap-3 border-b border-[#DED7C8] pb-3">
+          <svg class="w-5 h-5 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="site-search-input" placeholder="পণ্য খুঁজুন..." class="flex-1 text-base focus:outline-none" data-i18n="search_placeholder">
+          <button id="close-search-btn" class="text-gray-400 hover:text-gray-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+        <div id="search-results-container" class="mt-3 max-h-80 overflow-y-auto divide-y divide-gray-100"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

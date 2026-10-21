@@ -68,13 +68,14 @@ window.TRANSLATIONS = {
     // Footer
     footer_tagline: "FAITH • REMEMBRANCE • PURPOSE",
     footer_desc: "Musafir is dedicated to reviving Islamic values in modern daily living through pure, aesthetic, and meaningful lifestyle products.",
-    footer_copyright: "© 2025 MUSAFIR. All rights reserved.",
+    footer_copyright: "© 2026 MUSAFIR. All rights reserved.",
     footer_dev: "Design & Developed with Barakah by MD. Ziaul Hasan",
     footer_quick_links: "Quick Links",
     footer_customer_service: "Customer Care",
-    footer_delivery_info: "Delivery & Returns",
+    footer_policies: "Policies",
+    footer_delivery_info: "Return & Refund Policy",
     footer_privacy: "Privacy Policy",
-    footer_terms: "Terms of Service",
+    footer_terms: "Terms & Conditions",
 
     // Auth Modal
     auth_title: "Welcome to Musafir",
@@ -174,13 +175,14 @@ window.TRANSLATIONS = {
     // Footer
     footer_tagline: "ঈমান • জিকির • উদ্দেশ্যময় জীবন",
     footer_desc: "মুসাফির আধুনিক প্রাত্যহিক জীবনে খাঁটি ইসলামিক মূল্যবোধের বিকাশ ঘটাতে নান্দনিক ও অর্থপূর্ণ ইসলামিক পণ্যের বিশ্বস্ত প্রতিষ্ঠান।",
-    footer_copyright: "© ২০২৫ মুসাফির। সর্বস্বত্ব সংরক্ষিত।",
+    footer_copyright: "© ২০২৬ মুসাফির। সর্বস্বত্ব সংরক্ষিত।",
     footer_dev: "ডিজাইন ও ডেভেলপমেন্ট: মোঃ জিয়াউল হাসান",
     footer_quick_links: "গুরুত্বপূর্ণ লিংক",
     footer_customer_service: "গ্রাহক সেবা",
-    footer_delivery_info: "ডেলিভারি ও রিটার্ন নীতি",
+    footer_policies: "নীতিমালা",
+    footer_delivery_info: "রিটার্ন ও রিফান্ড নীতি",
     footer_privacy: "গোপনীয়তা নীতি",
-    footer_terms: "শর্তাবলী",
+    footer_terms: "শর্তাবলী ও নিয়মাবলী",
 
     // Auth Modal
     auth_title: "মুসাফিরে স্বাগতম",

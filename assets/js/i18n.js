@@ -108,7 +108,37 @@ window.TRANSLATIONS = {
     product_desc: "Description",
     product_guarantee: "100% Authentic Quality Guaranteed",
     product_cod: "Cash on Delivery Available Nationwide",
-    product_return: "7 Days Easy Replacement Policy"
+    product_return: "7 Days Easy Replacement Policy",
+
+    // Page Banners
+    shop_banner_eyebrow: "MUSAFIR COLLECTION",
+    shop_banner_title: "Our Islamic Lifestyle Catalog",
+    shop_banner_desc: "Explore authentic Quran, tasbih, prayer essentials, elegant wall art, and spiritual gifts.",
+
+    about_banner_eyebrow: "OUR STORY & VISION",
+    about_banner_title: "The Essence of MUSAFIR",
+    about_banner_desc: "In this ephemeral world, every believer is a traveler (Musafir). Our vision is to enrich that sacred journey with products that inspire prayer, knowledge, and inner peace.",
+
+    contact_banner_eyebrow: "WE ARE HERE TO SERVE",
+    contact_banner_title: "Get in Touch with MUSAFIR",
+    contact_banner_desc: "Have questions regarding our Quran editions, custom gift hampers, or your delivery? Reach out anytime.",
+
+    cart_banner_eyebrow: "SECURE CHECKOUT",
+    cart_banner_desc: "Review your selected blessed items, confirm delivery address, and proceed with instant WhatsApp order.",
+
+    details_banner_eyebrow: "MUSAFIR EXCLUSIVE",
+
+    privacy_banner_eyebrow: "TRUST & INTEGRITY",
+    privacy_banner_title: "Privacy Policy",
+    privacy_banner_desc: "Learn how MUSAFIR collects, safeguards, and respects your personal data with utmost trust.",
+
+    terms_banner_eyebrow: "TERMS OF SERVICE",
+    terms_banner_title: "Terms & Conditions",
+    terms_banner_desc: "Guidelines and purchase terms for using the MUSAFIR platform. Please review before proceeding.",
+
+    return_banner_eyebrow: "CUSTOMER CARE & SATISFACTION",
+    return_banner_title: "Return & Refund Policy",
+    return_banner_desc: "Your satisfaction is our primary priority. Clear and simple guidelines for product exchange or returns."
   },
 
   bn: {
@@ -215,7 +245,37 @@ window.TRANSLATIONS = {
     product_desc: "বিস্তারিত বিবরণ",
     product_guarantee: "১০০% প্রিমিয়াম ও অরিজিনাল কোয়ালিটি নিশ্চয়তা",
     product_cod: "সারা বাংলাদেশে ক্যাশ অন ডেলিভারি সুবিধা",
-    product_return: "৭ দিনের সহজ রিটার্ন বা পরিবর্তন পলিসি"
+    product_return: "৭ দিনের সহজ রিটার্ন বা পরিবর্তন পলিসি",
+
+    // Page Banners
+    shop_banner_eyebrow: "মুসাফির কালেকশন",
+    shop_banner_title: "আমাদের ইসলামিক লাইফস্টাইল ক্যাটালগ",
+    shop_banner_desc: "খুঁজে নিন পবিত্র কুরআন, তসবিহ, জায়নামাজ, ইসলামিক ক্যালিগ্রাফি ও বরকতময় উপহার সামগ্রী।",
+
+    about_banner_eyebrow: "আমাদের পরিচিতি ও লক্ষ্য",
+    about_banner_title: "মুসাফিরের মূল চেতনা",
+    about_banner_desc: "এই ক্ষণস্থায়ী দুনিয়ায় প্রতিটি বিশ্বাসীই একজন পথিক (মুসাফির)। আমাদের লক্ষ্য হলো এমন সামগ্রী উপহার দেওয়া যা আপনার ইবাদত, জ্ঞান ও অন্তরের প্রশান্তি বৃদ্ধি করে।",
+
+    contact_banner_eyebrow: "আমরা আপনার সেবায় নিবেদিত",
+    contact_banner_title: "মুসাফিরের সাথে যোগাযোগ করুন",
+    contact_banner_desc: "পবিত্র কুরআন, কাস্টম গিফট বক্স কিংবা ডেলিভারি সংক্রান্ত যেকোনো প্রয়োজনে আমাদের সাথে নির্দ্বিধায় যোগাযোগ করুন।",
+
+    cart_banner_eyebrow: "নিরাপদ চেকআউট",
+    cart_banner_desc: "আপনার নির্বাচিত পণ্যসমূহ পর্যালোচনা করুন, ডেলিভারি ঠিকানা দিন এবং সরাসরি হোয়াটসঅ্যাপে অর্ডার সম্পন্ন করুন।",
+
+    details_banner_eyebrow: "মুসাফির এক্সক্লুসিভ",
+
+    privacy_banner_eyebrow: "বিশ্বাস ও আমানতদারি",
+    privacy_banner_title: "গোপনীয়তা নীতিমালা",
+    privacy_banner_desc: "আপনার ব্যক্তিগত তথ্যের নিরাপত্তা ও আমানত রক্ষা করা আমাদের দায়িত্ব। জানুন মুসাফির কীভাবে আপনার তথ্য সংগ্রহ, সংরক্ষণ ও সুরক্ষিত রাখে।",
+
+    terms_banner_eyebrow: "সেবার নিয়মাবলী",
+    terms_banner_title: "শর্তাবলী ও নিয়মাবলী",
+    terms_banner_desc: "মুসাফির প্ল্যাটফর্ম ব্যবহারের নিয়মাবলী ও ক্রয় সংক্রান্ত শর্তাবলী। আমাদের সেবা উপভোগ করার পূর্বে অনুগ্রহ করে মনোযোগ দিয়ে পড়ুন।",
+
+    return_banner_eyebrow: "গ্রাহক সন্তুষ্টি ও সেবা",
+    return_banner_title: "রিটার্ন ও রিফান্ড নীতিমালা",
+    return_banner_desc: "আপনার সন্তুষ্টি আমাদের প্রধান অগ্রাধিকার। মুসাফির থেকে কেনাকাটা করার পর যেকোনো কারণে পণ্য পরিবর্তন বা রিটার্নের ক্ষেত্রে আমাদের স্পষ্ট ও সহজ নীতিমালা।"
   }
 };
 

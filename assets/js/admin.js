@@ -1,17 +1,196 @@
 /**
  * MUSAFIR - Admin Panel Controller (admin.js)
- * Comprehensive Product & Category Management
- * Includes: Multi-image Gallery, Stock Quantity & Status Toggle, Key Highlights, and Category Editor
+ * Comprehensive Product & Category Management with Strict Firebase Auth Gate
+ * Authorized Super Admin: zhsaikot@gmail.com
  */
 
-document.addEventListener('DOMContentLoaded', async () => {
+const AUTHORIZED_ADMIN_EMAILS = ['zhsaikot@gmail.com'];
+let isDashboardInitialized = false;
+
+document.addEventListener('DOMContentLoaded', () => {
+  initAdminAuthGuard();
+});
+
+/* ==========================================================================
+   Admin Authentication Gate & Security Observer
+   ========================================================================== */
+function initAdminAuthGuard() {
+  const loginView = document.getElementById('admin-login-view');
+  const dashboardView = document.getElementById('admin-dashboard-view');
+  const adminBadge = document.getElementById('admin-user-badge');
+  const signoutBtn = document.getElementById('admin-signout-btn');
+  const adminEmailEl = document.getElementById('admin-user-email');
+
+  if (typeof firebase !== 'undefined' && firebase.auth) {
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (user && user.email && AUTHORIZED_ADMIN_EMAILS.includes(user.email.toLowerCase())) {
+        // Authorized Super Admin Verified!
+        loginView?.classList.add('hidden');
+        dashboardView?.classList.remove('hidden');
+        adminBadge?.classList.remove('hidden');
+        adminBadge?.classList.add('flex');
+        signoutBtn?.classList.remove('hidden');
+        signoutBtn?.classList.add('flex');
+        if (adminEmailEl) adminEmailEl.textContent = user.email;
+
+        // Load and populate dashboard if not already initialized
+        if (!isDashboardInitialized) {
+          isDashboardInitialized = true;
+          await loadAdminDashboardData();
+        }
+      } else if (user) {
+        // User is logged in, but email is NOT in the authorized admin whitelist!
+        showAdminLoginAlert('অননুমোদিত অ্যাক্সেস! শুধুমাত্র অনুমোদিত অ্যাডমিন (zhsaikot@gmail.com) প্রবেশ করতে পারেন।', 'error');
+        await firebase.auth().signOut();
+        loginView?.classList.remove('hidden');
+        dashboardView?.classList.add('hidden');
+        adminBadge?.classList.add('hidden');
+        adminBadge?.classList.remove('flex');
+        signoutBtn?.classList.add('hidden');
+        signoutBtn?.classList.remove('flex');
+      } else {
+        // Not logged in: keep dashboard strictly hidden, reveal login gate
+        loginView?.classList.remove('hidden');
+        dashboardView?.classList.add('hidden');
+        adminBadge?.classList.add('hidden');
+        adminBadge?.classList.remove('flex');
+        signoutBtn?.classList.add('hidden');
+        signoutBtn?.classList.remove('flex');
+      }
+    });
+  } else {
+    console.warn("Firebase Auth library not loaded yet; displaying login gate.");
+  }
+}
+
+async function loadAdminDashboardData() {
   await populateCategoryDropdown();
   await renderAdminProducts();
   await setupAdminStats();
   setupProductModalEvents();
   setupCategoryModalEvents();
   setupSearchFilterEvents();
-});
+}
+
+/* ==========================================================================
+   Admin Login, Logout & Password Reset Handlers
+   ========================================================================== */
+window.handleAdminLogin = async function(e) {
+  e?.preventDefault();
+  const emailInput = document.getElementById('admin-login-email');
+  const passwordInput = document.getElementById('admin-login-password');
+  const btn = document.getElementById('admin-login-btn');
+  const btnText = document.getElementById('admin-login-btn-text');
+  const spinner = document.getElementById('admin-login-btn-spinner');
+
+  const email = emailInput?.value.trim().toLowerCase();
+  const password = passwordInput?.value;
+
+  if (!email || !password) {
+    showAdminLoginAlert('দয়া করে ইমেইল এবং পাসওয়ার্ড উভয়ই পূরণ করুন।', 'warning');
+    return;
+  }
+
+  if (!AUTHORIZED_ADMIN_EMAILS.includes(email)) {
+    showAdminLoginAlert('এই ইমেইলটি অনুমোদিত অ্যাডমিন হিসেবে তালিকাভুক্ত নয়।', 'error');
+    return;
+  }
+
+  // Loading state
+  btnText?.classList.add('hidden');
+  spinner?.classList.remove('hidden');
+  btn?.setAttribute('disabled', 'true');
+  hideAdminLoginAlert();
+
+  try {
+    const cred = await firebase.auth().signInWithEmailAndPassword(email, password);
+    showToast(`স্বাগতম, অ্যাডমিন ${cred.user.email}!`, 'success');
+  } catch (error) {
+    console.error("Admin Login Error:", error);
+    let errorMsg = 'লগইন ব্যর্থ হয়েছে। পাসওয়ার্ড পুনরায় পরীক্ষা করুন।';
+    if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+      errorMsg = 'ভুল পাসওয়ার্ড অথবা ভুল তথ্য! অনুগ্রহ করে সঠিক পাসওয়ার্ড দিন।';
+    } else if (error.code === 'auth/user-not-found') {
+      errorMsg = 'এই ইমেইলে কোনো অ্যাডমিন অ্যাকাউন্ট পাওয়া যায়নি।';
+    } else if (error.code === 'auth/too-many-requests') {
+      errorMsg = 'অতিরিক্ত ব্যর্থ চেষ্টার কারণে সাময়িকভাবে ব্লক করা হয়েছে। কিছুক্ষণ পর চেষ্টা করুন।';
+    } else if (error.code === 'auth/network-request-failed') {
+      errorMsg = 'ইন্টারনেট সংযোগ সমস্যা। আপনার নেটওয়ার্ক পরীক্ষা করুন।';
+    } else {
+      errorMsg = error.message;
+    }
+    showAdminLoginAlert(errorMsg, 'error');
+  } finally {
+    btnText?.classList.remove('hidden');
+    spinner?.classList.add('hidden');
+    btn?.removeAttribute('disabled');
+  }
+};
+
+window.handleAdminSignOut = async function() {
+  if (confirm("আপনি কি অ্যাডমিন কনসোল থেকে লগআউট করতে চান?")) {
+    try {
+      await firebase.auth().signOut();
+      isDashboardInitialized = false;
+      showToast('অ্যাডমিন সফলভাবে লগআউট হয়েছেন।', 'info');
+      const pwInput = document.getElementById('admin-login-password');
+      if (pwInput) pwInput.value = '';
+    } catch (e) {
+      console.error("Admin signout error:", e);
+    }
+  }
+};
+
+window.handleAdminForgotPassword = async function() {
+  const email = document.getElementById('admin-login-email')?.value.trim() || 'zhsaikot@gmail.com';
+  if (confirm(`পাসওয়ার্ড রিসেট করার লিঙ্ক কি "${email}" ঠিকানায় পাঠাতে চান?`)) {
+    try {
+      await firebase.auth().sendPasswordResetEmail(email);
+      showAdminLoginAlert(`পাসওয়ার্ড রিসেট করার লিঙ্ক আপনার ইমেইলে (${email}) পাঠানো হয়েছে! অনুগ্রহ করে ইনবক্স অথবা স্প্যাম ফোল্ডার চেক করুন।`, 'success');
+    } catch (error) {
+      showAdminLoginAlert(`পাসওয়ার্ড রিসেট ব্যর্থ: ${error.message}`, 'error');
+    }
+  }
+};
+
+window.toggleAdminPasswordVisibility = function() {
+  const pwInput = document.getElementById('admin-login-password');
+  const eyeIcon = document.getElementById('admin-pw-eye-icon');
+  if (!pwInput) return;
+
+  if (pwInput.type === 'password') {
+    pwInput.type = 'text';
+    eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/>`;
+  } else {
+    pwInput.type = 'password';
+    eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>`;
+  }
+};
+
+function showAdminLoginAlert(msg, type = 'error') {
+  const alertBox = document.getElementById('admin-login-alert');
+  const alertMsg = document.getElementById('admin-login-alert-msg');
+  const alertIcon = document.getElementById('admin-login-alert-icon');
+  if (!alertBox || !alertMsg) return;
+
+  alertMsg.textContent = msg;
+  if (type === 'error') {
+    alertBox.className = 'mb-4 p-3.5 rounded-xl text-xs font-medium border flex items-start gap-2.5 bg-red-50 text-red-800 border-red-200';
+    if (alertIcon) alertIcon.textContent = '✕';
+  } else if (type === 'warning') {
+    alertBox.className = 'mb-4 p-3.5 rounded-xl text-xs font-medium border flex items-start gap-2.5 bg-amber-50 text-amber-800 border-amber-200';
+    if (alertIcon) alertIcon.textContent = '⚠️';
+  } else if (type === 'success') {
+    alertBox.className = 'mb-4 p-3.5 rounded-xl text-xs font-medium border flex items-start gap-2.5 bg-emerald-50 text-emerald-800 border-emerald-200';
+    if (alertIcon) alertIcon.textContent = '✓';
+  }
+  alertBox.classList.remove('hidden');
+}
+
+function hideAdminLoginAlert() {
+  const alertBox = document.getElementById('admin-login-alert');
+  alertBox?.classList.add('hidden');
+}
 
 let currentEditingProductId = null;
 let currentEditingCategoryId = null;

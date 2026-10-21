@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initHeader() {
   const header = document.getElementById('main-header');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
-  const closeMobileMenuBtn = document.getElementById('close-mobile-menu-btn');
+  let mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
 
   // Sticky header background on scroll
   window.addEventListener('scroll', () => {
@@ -56,23 +55,81 @@ function initHeader() {
     }
   });
 
-  // Mobile menu open / close
-  mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenuDrawer?.classList.remove('hidden');
+  // Defensive fallback: If mobileMenuDrawer is missing in DOM, create it dynamically
+  if (!mobileMenuDrawer && mobileMenuBtn) {
+    const currentPath = window.location.pathname.toLowerCase();
+    const isAbout = currentPath.includes('about');
+    const isContact = currentPath.includes('contact');
+    const isShop = currentPath.includes('shop');
+    const isHome = currentPath.includes('index') || currentPath.endsWith('/') || currentPath === '';
+
+    mobileMenuDrawer = document.createElement('div');
+    mobileMenuDrawer.id = 'mobile-menu-drawer';
+    mobileMenuDrawer.className = 'fixed inset-0 z-50 hidden';
+    mobileMenuDrawer.innerHTML = `
+      <div class="drawer-backdrop fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
+      <div class="drawer-content fixed top-0 left-0 w-72 h-full bg-[#081018] text-white p-6 shadow-2xl -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-6 border-b border-[#D6A63A]/20">
+            <img src="assets/images/MUSAFIR-Brand-Logo-White.png" alt="MUSAFIR" class="h-10 w-auto">
+            <button id="close-mobile-menu-btn" class="text-gray-400 hover:text-white p-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <nav class="flex flex-col space-y-4 mt-6 text-base">
+            <a href="index.html" class="${isHome ? 'text-[#D6A63A] font-semibold' : 'text-gray-300 hover:text-[#D6A63A]'} py-2" data-i18n="nav_home">Home</a>
+            <a href="shop.html" class="${isShop ? 'text-[#D6A63A] font-semibold' : 'text-gray-300 hover:text-[#D6A63A]'} py-2" data-i18n="nav_shop">Shop</a>
+            <a href="about.html" class="${isAbout ? 'text-[#D6A63A] font-semibold' : 'text-gray-300 hover:text-[#D6A63A]'} py-2" data-i18n="nav_about">About</a>
+            <a href="contact.html" class="${isContact ? 'text-[#D6A63A] font-semibold' : 'text-gray-300 hover:text-[#D6A63A]'} py-2" data-i18n="nav_contact">Contact</a>
+            <a href="admin.html" class="text-gray-400 hover:text-[#D6A63A] py-2 border-t border-gray-800 text-sm" data-i18n="nav_admin">Admin Panel</a>
+          </nav>
+        </div>
+        <div class="pt-6 border-t border-[#D6A63A]/20 text-xs text-gray-400">
+          <p class="text-[#D6A63A] font-medium">MUSAFIR ISLAMIC LIFESTYLE</p>
+          <p class="mt-1">Faith • Remembrance • Purpose</p>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(mobileMenuDrawer);
+    if (window.i18n) window.i18n.translateDOM();
+  }
+
+  const closeMobileMenuBtn = document.getElementById('close-mobile-menu-btn');
+
+  // Mobile menu open / close handlers
+  const openMobile = () => {
+    if (!mobileMenuDrawer) return;
+    mobileMenuDrawer.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
     setTimeout(() => {
-      mobileMenuDrawer?.querySelector('.drawer-content')?.classList.remove('-translate-x-full');
+      mobileMenuDrawer.querySelector('.drawer-content')?.classList.remove('-translate-x-full');
     }, 10);
-  });
+  };
 
   const closeMobile = () => {
-    mobileMenuDrawer?.querySelector('.drawer-content')?.classList.add('-translate-x-full');
+    if (!mobileMenuDrawer) return;
+    mobileMenuDrawer.querySelector('.drawer-content')?.classList.add('-translate-x-full');
+    document.body.classList.remove('overflow-hidden');
     setTimeout(() => {
-      mobileMenuDrawer?.classList.add('hidden');
+      mobileMenuDrawer.classList.add('hidden');
     }, 300);
   };
 
+  mobileMenuBtn?.addEventListener('click', openMobile);
   closeMobileMenuBtn?.addEventListener('click', closeMobile);
   mobileMenuDrawer?.querySelector('.drawer-backdrop')?.addEventListener('click', closeMobile);
+
+  // Close when tapping any navigation link inside mobile drawer
+  mobileMenuDrawer?.querySelectorAll('nav a')?.forEach(link => {
+    link.addEventListener('click', closeMobile);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenuDrawer && !mobileMenuDrawer.classList.contains('hidden')) {
+      closeMobile();
+    }
+  });
 }
 
 /* ==========================================================================

@@ -268,7 +268,7 @@ window.orderDetailViaWhatsApp = () => {
     }
   }
 
-  const phone = window.STORE_CONFIG.whatsappNumber || "8801700000000";
+  const phone = window.STORE_CONFIG.whatsappNumber || "8801577696391";
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 

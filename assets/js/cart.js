@@ -181,7 +181,7 @@ window.submitCheckoutOrder = (event) => {
     msg += `\nThank you! Please confirm my order.`;
   }
 
-  const phoneNum = window.STORE_CONFIG.whatsappNumber || "8801700000000";
+  const phoneNum = window.STORE_CONFIG.whatsappNumber || "8801577696391";
   const url = `https://wa.me/${phoneNum}?text=${encodeURIComponent(msg)}`;
 
   showToast(window.i18n.t('order_success'), 'success');

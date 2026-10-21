@@ -24,11 +24,12 @@ window.IS_FIRESTORE_PROVISIONED = localStorage.getItem('musafir_firestore_active
 window.STORE_CONFIG = {
   brandName: "MUSAFIR",
   descriptor: "Islamic Lifestyle",
-  whatsappNumber: "8801700000000", // International format without '+' or spaces
-  displayPhone: "01700-000000",
+  whatsappNumber: "8801577696391", // International format without '+' or spaces
+  displayPhone: "+880 1577-696391",
+  whatsappHandle: "@musafirlifestyle",
   email: "support@musafirlifestyle.com",
   facebookUrl: "https://www.facebook.com/profile.php?id=61564925019564",
-  instagramUrl: "https://www.instagram.com/musafir.zh",
+  instagramUrl: "https://www.instagram.com/musafirlifestyle",
   youtubeUrl: "https://youtube.com/@musafirlifestyle",
   tiktokUrl: "https://tiktok.com/@musafirlifestyle",
   address: "House 12, Road 5, Dhanmondi, Dhaka, Bangladesh",

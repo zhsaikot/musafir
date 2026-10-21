@@ -272,7 +272,7 @@ window.submitWhatsAppOrder = (event) => {
     message += `\nPlease confirm my order. Jazakallahu Khair!`;
   }
 
-  const phoneNum = window.STORE_CONFIG.whatsappNumber || "8801700000000";
+  const phoneNum = window.STORE_CONFIG.whatsappNumber || "8801577696391";
   const url = `https://wa.me/${phoneNum}?text=${encodeURIComponent(message)}`;
 
   window.closeQuickOrderModal();
@@ -675,7 +675,7 @@ window.handleDirectBuyNow = async function(productId) {
   const lang = (window.i18n && window.i18n.getLang) ? window.i18n.getLang() : 'en';
   const title = lang === 'bn' ? (item.title_bn || item.title_en) : (item.title_en || item.title_bn);
   const price = item.price ? item.price.toLocaleString() : '0';
-  const phone = (window.STORE_CONFIG && window.STORE_CONFIG.whatsappNumber) || "8801700000000";
+  const phone = (window.STORE_CONFIG && window.STORE_CONFIG.whatsappNumber) || "8801577696391";
   
   // Clean product URL
   const itemUrl = `${window.location.origin}${window.location.pathname.replace(/\/[^/]*$/, '')}/item-details.html?id=${encodeURIComponent(item.id)}`;

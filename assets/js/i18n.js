@@ -30,6 +30,7 @@ window.TRANSLATIONS = {
     hero_title_1: "More Than Products",
     hero_title_prefix: "It’s a ",
     hero_title_highlight: "Deen Lifestyle",
+    hero_title_2: "Deen Lifestyle",
     hero_desc: "Discover meaningful Islamic products that bring peace, purpose and barakah to your everyday life.",
     hero_cta: "Shop Now",
 
@@ -134,7 +135,8 @@ window.TRANSLATIONS = {
     hero_eyebrow: "মুসাফির — ইসলামিক লাইফস্টাইল",
     hero_title_1: "শুধু পণ্য নয়,",
     hero_title_prefix: "এটি একটি ",
-    hero_title_highlight: "দ্বীনি লাইফস্টাইল",
+    hero_title_highlight: "দ্বীন লাইফস্টাইল",
+    hero_title_2: "দ্বীন লাইফস্টাইল",
     hero_desc: "অর্থপূর্ণ ইসলামিক পণ্যের সমৃদ্ধ সমাহার, যা আপনার দৈনন্দিন জীবনে নিয়ে আসবে আত্মিক প্রশান্তি, উদ্দেশ্য ও অফুরন্ত বরকত।",
     hero_cta: "এখনই কিনুন",
 
@@ -242,7 +244,9 @@ class I18nManager {
 
   t(key) {
     const dict = window.TRANSLATIONS[this.currentLang] || window.TRANSLATIONS.en;
-    return dict[key] || window.TRANSLATIONS.en[key] || key;
+    if (dict && dict[key] !== undefined) return dict[key];
+    if (window.TRANSLATIONS.en && window.TRANSLATIONS.en[key] !== undefined) return window.TRANSLATIONS.en[key];
+    return null; // Return null so fallback does not overwrite existing HTML with raw key!
   }
 
   translateDOM() {
@@ -251,10 +255,12 @@ class I18nManager {
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
       const translation = this.t(key);
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.setAttribute('placeholder', translation);
-      } else {
-        el.innerHTML = translation;
+      if (translation !== null) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.setAttribute('placeholder', translation);
+        } else {
+          el.innerHTML = translation;
+        }
       }
     });
 

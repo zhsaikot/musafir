@@ -29,7 +29,7 @@ window.STORE_CONFIG = {
   whatsappHandle: "@musafirlifestyle",
   email: "support@musafirlifestyle.com",
   facebookUrl: "https://www.facebook.com/profile.php?id=61564925019564",
-  instagramUrl: "https://www.instagram.com/musafirlifestyle",
+  instagramUrl: "https://www.instagram.com/musafir.zh",
   youtubeUrl: "https://youtube.com/@musafirlifestyle",
   tiktokUrl: "https://tiktok.com/@musafirlifestyle",
   address: "House 12, Road 5, Dhanmondi, Dhaka, Bangladesh",

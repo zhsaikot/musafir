@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUSAFIR — Islamic Lifestyle | Faith • Remembrance • Purpose</title>
+  <meta name="description" content="Discover meaningful Islamic products that bring peace, purpose and barakah to your everyday life. Quran, Tasbih, Prayer Rugs, Wall Art & Gifts.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/images/MUSAFIR BRAND Icon.webp">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#FCFBF7',
+              100: '#F7F1E4',
+              200: '#EBDDC0',
+              300: '#DEC996',
+              400: '#E5B342',
+              500: '#D6A63A', // Antique Gold
+              600: '#C2912B',
+              700: '#946B18',
+              800: '#171717', // Charcoal
+              900: '#081018', // Midnight Navy
+              950: '#030609'  // Obsidian Black
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            bn: ['Hind Siliguri', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#FCFBF7] text-[#171717] min-h-screen flex flex-col font-sans">
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-40 bg-[#081018] text-white transition-all duration-300 border-b border-[#D6A63A]/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/images/MUSAFIR-Brand-Logo-White.png" alt="MUSAFIR Islamic Lifestyle" class="h-10 sm:h-12 w-auto object-contain">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+        <a href="index.html" class="text-[#D6A63A] border-b-2 border-[#D6A63A] pb-1 font-semibold transition" data-i18n="nav_home">Home</a>
+        <a href="shop.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_shop">Shop</a>
+        <a href="about.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_about">About</a>
+        <a href="contact.html" class="text-gray-300 hover:text-[#D6A63A] transition" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <!-- Action Controls (Language, Search, Auth, Cart) -->
+      <div class="flex items-center space-x-4 sm:space-x-5">
+        
+        <!-- Language Switcher Button -->
+        <button class="lang-toggle-btn px-2.5 py-1 text-xs font-semibold rounded border border-[#D6A63A]/40 text-[#F3D58A] hover:bg-[#D6A63A] hover:text-[#081018] transition flex items-center gap-1.5" title="Switch Language">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+          <span class="lang-btn-text">বাংলা</span>
+        </button>
+
+        <!-- Search Trigger -->
+        <button class="open-search-btn p-2 text-gray-300 hover:text-[#D6A63A] transition" title="Search Products">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </button>
+
+        <!-- User / Account Trigger (Google Auth) -->
+        <button class="open-auth-btn p-2 text-gray-300 hover:text-[#D6A63A] transition" title="User Account">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        </button>
+
+        <!-- Shopping Cart Trigger -->
+        <button class="open-cart-btn relative p-2 text-gray-300 hover:text-[#D6A63A] transition" title="Cart">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-count-badge absolute -top-1 -right-1 bg-[#D6A63A] text-[#081018] text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+        </button>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="drawer-backdrop fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="drawer-content fixed top-0 left-0 w-72 h-full bg-[#081018] text-white p-6 shadow-2xl -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-[#D6A63A]/20">
+          <img src="assets/images/MUSAFIR-Brand-Logo-White.png" alt="MUSAFIR" class="h-10 w-auto">
+          <button id="close-mobile-menu-btn" class="text-gray-400 hover:text-white p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="flex flex-col space-y-4 mt-6 text-base">
+          <a href="index.html" class="text-[#D6A63A] font-semibold py-2" data-i18n="nav_home">Home</a>
+          <a href="shop.html" class="text-gray-300 hover:text-[#D6A63A] py-2" data-i18n="nav_shop">Shop</a>
+          <a href="about.html" class="text-gray-300 hover:text-[#D6A63A] py-2" data-i18n="nav_about">About</a>
+          <a href="contact.html" class="text-gray-300 hover:text-[#D6A63A] py-2" data-i18n="nav_contact">Contact</a>
+          <a href="admin.html" class="text-gray-400 hover:text-[#D6A63A] py-2 border-t border-gray-800 text-sm" data-i18n="nav_admin">Admin Panel</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-[#D6A63A]/20 text-xs text-gray-400">
+        <p class="text-[#D6A63A] font-medium">MUSAFIR ISLAMIC LIFESTYLE</p>
+        <p class="mt-1">Faith • Remembrance • Purpose</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow pt-20">
+
+    <!-- ==========================================================================
+         HERO SECTION (Cinematic Islamic Atmosphere)
+         ========================================================================== -->
+    <section class="relative min-h-[580px] lg:min-h-[640px] flex items-center bg-[#081018] overflow-hidden">
+      
+      <!-- Background Image with Gradient Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/Hero-Banner-Background-Image.webp" alt="MUSAFIR Islamic Lifestyle Background" class="w-full h-full object-cover object-right md:object-center opacity-90">
+        <!-- Dark gradient mask on left for high text readability -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#081018] via-[#081018]/85 to-transparent sm:w-3/4 lg:w-3/5"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#081018] via-transparent to-transparent h-24 bottom-0"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="max-w-xl text-left">
+          
+          <!-- Eyebrow -->
+          <p class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#D6A63A] uppercase mb-4" data-i18n="hero_eyebrow">
+            MUSAFIR — ISLAMIC LIFESTYLE
+          </p>
+
+          <!-- Main Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-[1.08] mb-5 tracking-tight">
+            <span data-i18n="hero_title_1">More Than Products</span><br>
+            <span class="text-white">It’s a </span><span class="text-[#D6A63A] font-serif italic" data-i18n="hero_title_2">Deen Lifestyle</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-base sm:text-lg text-gray-300 font-normal leading-relaxed mb-8 max-w-lg" data-i18n="hero_desc">
+            Discover meaningful Islamic products that bring peace, purpose and barakah to your everyday life.
+          </p>
+
+          <!-- CTA Button -->
+          <div class="flex items-center gap-4">
+            <a href="shop.html" class="btn-gold inline-flex items-center gap-3 px-8 py-3.5 rounded-lg text-sm sm:text-base font-semibold shadow-lg hover:shadow-[#D6A63A]/20 transition-all group">
+              <span data-i18n="hero_cta">Shop Now</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SHOP BY CATEGORY SECTION
+         ========================================================================== -->
+    <section class="py-16 sm:py-20 bg-[#FCFBF7]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="flex items-center justify-center gap-3 mb-2">
+            <span class="w-8 h-[1px] bg-[#D6A63A]"></span>
+            <p class="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#D6A63A] uppercase" data-i18n="cat_eyebrow">SHOP BY CATEGORY</p>
+            <span class="w-8 h-[1px] bg-[#D6A63A]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-[#171717] tracking-tight" data-i18n="cat_title">
+            Find What Truly Matters
+          </h2>
+        </div>
+
+        <!-- 6 Categories Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+          
+          <!-- Cat 1: Quran & Tafsir -->
+          <a href="shop.html?category=quran-tafsir" class="category-card p-6 rounded-xl flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 group-hover:bg-[#D6A63A]/20 transition">
+              <svg class="w-7 h-7 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <h3 class="text-sm font-semibold text-[#171717] group-hover:text-[#D6A63A] transition" data-i18n="cat_quran">Quran & Tafsir</h3>
+          </a>
+
+          <!-- Cat 2: Prayer Essentials -->
+          <a href="shop.html?category=prayer-essentials" class="category-card p-6 rounded-xl flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 group-hover:bg-[#D6A63A]/20 transition">
+              <svg class="w-7 h-7 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/><circle cx="12" cy="7" r="1" fill="#D6A63A"/><circle cx="15.5" cy="8.5" r="1" fill="#D6A63A"/><circle cx="17" cy="12" r="1" fill="#D6A63A"/><circle cx="15.5" cy="15.5" r="1" fill="#D6A63A"/><circle cx="12" cy="17" r="1" fill="#D6A63A"/><circle cx="8.5" cy="15.5" r="1" fill="#D6A63A"/><circle cx="7" cy="12" r="1" fill="#D6A63A"/><circle cx="8.5" cy="8.5" r="1" fill="#D6A63A"/></svg>
+            </div>
+            <h3 class="text-sm font-semibold text-[#171717] group-hover:text-[#D6A63A] transition" data-i18n="cat_prayer">Prayer Essentials</h3>
+          </a>
+
+          <!-- Cat 3: Islamic Home Decor -->
+          <a href="shop.html?category=home-decor" class="category-card p-6 rounded-xl flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 group-hover:bg-[#D6A63A]/20 transition">
+              <svg class="w-7 h-7 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <h3 class="text-sm font-semibold text-[#171717] group-hover:text-[#D6A63A] transition" data-i18n="cat_decor">Islamic Home Decor</h3>
+          </a>
+
+          <!-- Cat 4: Books & Learning -->
+          <a href="shop.html?category=books-learning" class="category-card p-6 rounded-xl flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 group-hover:bg-[#D6A63A]/20 transition">
+              <svg class="w-7 h-7 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+            </div>
+            <h3 class="text-sm font-semibold text-[#171717] group-hover:text-[#D6A63A] transition" data-i18n="cat_books">Books & Learning</h3>
+          </a>
+
+          <!-- Cat 5: Gifts & Hampers -->
+          <a href="shop.html?category=gifts-hampers" class="category-card p-6 rounded-xl flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 group-hover:bg-[#D6A63A]/20 transition">
+              <svg class="w-7 h-7 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 8v13m0-13V4.5a2.5 2.5 0 10-5 0V8m5 0V4.5a2.5 2.5 0 115 0V8m-10 0h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V10a2 2 0 012-2z"/></svg>
+            </div>
+            <h3 class="text-sm font-semibold text-[#171717] group-hover:text-[#D6A63A] transition" data-i18n="cat_gifts">Gifts & Hampers</h3>
+          </a>
+
+          <!-- Cat 6: Accessories -->
+          <a href="shop.html?category=accessories" class="category-card p-6 rounded-xl flex flex-col items-center justify-center text-center group cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 group-hover:bg-[#D6A63A]/20 transition">
+              <svg class="w-7 h-7 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            </div>
+            <h3 class="text-sm font-semibold text-[#171717] group-hover:text-[#D6A63A] transition" data-i18n="cat_accessories">Accessories</h3>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED PRODUCTS SECTION ("Popular Picks")
+         ========================================================================== -->
+    <section class="py-16 sm:py-20 bg-white border-y border-[#DED7C8]/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header -->
+        <div class="text-center mb-12 sm:mb-16">
+          <div class="flex items-center justify-center gap-3 mb-2">
+            <span class="w-8 h-[1px] bg-[#D6A63A]"></span>
+            <p class="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#D6A63A] uppercase" data-i18n="featured_eyebrow">FEATURED PRODUCTS</p>
+            <span class="w-8 h-[1px] bg-[#D6A63A]"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-[#171717] tracking-tight" data-i18n="featured_title">
+            Popular Picks
+          </h2>
+        </div>
+
+        <!-- Dynamic Featured Products Grid -->
+        <div id="home-featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          
+          <!-- Product Card 1: Quran (With Translation) -->
+          <div class="product-card rounded-xl overflow-hidden flex flex-col justify-between group">
+            <a href="item-details.html?id=p1" class="block overflow-hidden relative aspect-[4/3] bg-gray-100">
+              <img src="assets/images/product-quran.jpg" alt="Quran (With Translation)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <div class="p-5 flex flex-col flex-1 justify-between">
+              <div>
+                <a href="item-details.html?id=p1" class="block">
+                  <h3 class="text-base font-semibold text-[#171717] group-hover:text-[#D6A63A] transition">Quran (With Translation)</h3>
+                </a>
+                <p class="text-lg font-bold text-[#171717] mt-1.5">৳ 550</p>
+              </div>
+              <div class="mt-4">
+                <button onclick="handleAddToCart('p1')" class="btn-navy w-full py-2.5 px-4 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#030609]">
+                  <svg class="w-4 h-4 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                  <span data-i18n="add_to_cart">Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2: Premium Tasbih -->
+          <div class="product-card rounded-xl overflow-hidden flex flex-col justify-between group">
+            <a href="item-details.html?id=p2" class="block overflow-hidden relative aspect-[4/3] bg-gray-100">
+              <img src="assets/images/product-tasbih.jpg" alt="Premium Tasbih" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <div class="p-5 flex flex-col flex-1 justify-between">
+              <div>
+                <a href="item-details.html?id=p2" class="block">
+                  <h3 class="text-base font-semibold text-[#171717] group-hover:text-[#D6A63A] transition">Premium Tasbih</h3>
+                </a>
+                <p class="text-lg font-bold text-[#171717] mt-1.5">৳ 250</p>
+              </div>
+              <div class="mt-4">
+                <button onclick="handleAddToCart('p2')" class="btn-navy w-full py-2.5 px-4 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#030609]">
+                  <svg class="w-4 h-4 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                  <span data-i18n="add_to_cart">Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3: Islamic Wall Art -->
+          <div class="product-card rounded-xl overflow-hidden flex flex-col justify-between group">
+            <a href="item-details.html?id=p3" class="block overflow-hidden relative aspect-[4/3] bg-gray-100">
+              <img src="assets/images/product-wallart.jpg" alt="Islamic Wall Art" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <div class="p-5 flex flex-col flex-1 justify-between">
+              <div>
+                <a href="item-details.html?id=p3" class="block">
+                  <h3 class="text-base font-semibold text-[#171717] group-hover:text-[#D6A63A] transition">Islamic Wall Art</h3>
+                </a>
+                <p class="text-lg font-bold text-[#171717] mt-1.5">৳ 450</p>
+              </div>
+              <div class="mt-4">
+                <button onclick="handleAddToCart('p3')" class="btn-navy w-full py-2.5 px-4 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#030609]">
+                  <svg class="w-4 h-4 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                  <span data-i18n="add_to_cart">Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4: Ramadan Lantern -->
+          <div class="product-card rounded-xl overflow-hidden flex flex-col justify-between group">
+            <a href="item-details.html?id=p4" class="block overflow-hidden relative aspect-[4/3] bg-gray-100">
+              <img src="assets/images/product-lantern.jpg" alt="Ramadan Lantern" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </a>
+            <div class="p-5 flex flex-col flex-1 justify-between">
+              <div>
+                <a href="item-details.html?id=p4" class="block">
+                  <h3 class="text-base font-semibold text-[#171717] group-hover:text-[#D6A63A] transition">Ramadan Lantern</h3>
+                </a>
+                <p class="text-lg font-bold text-[#171717] mt-1.5">৳ 600</p>
+              </div>
+              <div class="mt-4">
+                <button onclick="handleAddToCart('p4')" class="btn-navy w-full py-2.5 px-4 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#030609]">
+                  <svg class="w-4 h-4 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                  <span data-i18n="add_to_cart">Add to Cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- View All Link -->
+        <div class="text-center mt-12">
+          <a href="shop.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#D6A63A] text-[#171717] hover:bg-[#D6A63A] hover:text-[#081018] font-semibold text-sm transition">
+            <span data-i18n="view_all">View All Products</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         WHY MUSAFIR / BRAND VALUES ("Faith in Every Detail")
+         ========================================================================== -->
+    <section class="relative py-20 bg-[#081018] text-white overflow-hidden">
+      <!-- Subtle Islamic architectural background overlay -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <img src="assets/images/Hero-Banner-Background-Image.webp" alt="Background Texture" class="w-full h-full object-cover">
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-12">
+          <p class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#D6A63A] uppercase mb-2" data-i18n="why_eyebrow">WHY MUSAFIR</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight" data-i18n="why_title">
+            Faith in Every Detail
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+          
+          <!-- Value 1 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#D6A63A]/15 border border-[#D6A63A]/30 flex items-center justify-center flex-shrink-0 text-[#D6A63A]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1" data-i18n="why_item_1">Authentic Islamic Products</h3>
+              <p class="text-sm text-gray-300 leading-relaxed" data-i18n="why_item_1_desc">Carefully verified for spiritual and textual integrity.</p>
+            </div>
+          </div>
+
+          <!-- Value 2 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#D6A63A]/15 border border-[#D6A63A]/30 flex items-center justify-center flex-shrink-0 text-[#D6A63A]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1" data-i18n="why_item_2">Purposeful Living</h3>
+              <p class="text-sm text-gray-300 leading-relaxed" data-i18n="why_item_2_desc">Designed to inspire continuous remembrance of Allah.</p>
+            </div>
+          </div>
+
+          <!-- Value 3 -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#D6A63A]/15 border border-[#D6A63A]/30 flex items-center justify-center flex-shrink-0 text-[#D6A63A]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1" data-i18n="why_item_3">Quality You Can Trust</h3>
+              <p class="text-sm text-gray-300 leading-relaxed" data-i18n="why_item_3_desc">Handcrafted durability, premium materials, and elegance.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         START YOUR JOURNEY / FINAL CALL TO ACTION
+         ========================================================================== -->
+    <section class="py-16 sm:py-20 bg-[#F7F1E4] border-t border-[#DED7C8]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <p class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#D6A63A] uppercase mb-3" data-i18n="final_eyebrow">
+          START YOUR JOURNEY
+        </p>
+
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#171717] tracking-tight mb-4" data-i18n="final_title">
+          Live a More Meaningful Life
+        </h2>
+
+        <p class="text-base sm:text-lg text-gray-700 font-normal leading-relaxed mb-8 max-w-2xl mx-auto" data-i18n="final_desc">
+          Explore our collection and bring the beauty of Islam into your daily routine.
+        </p>
+
+        <a href="shop.html" class="btn-navy inline-flex items-center gap-3 px-8 py-3.5 rounded-lg text-sm sm:text-base font-semibold shadow-md hover:shadow-xl transition group">
+          <span data-i18n="final_cta">Shop Now</span>
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="bg-[#030609] text-white pt-16 pb-12 border-t border-[#D6A63A]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+        
+        <!-- Col 1: Brand Info -->
+        <div class="md:col-span-2">
+          <a href="index.html" class="inline-block mb-4">
+            <img src="assets/images/MUSAFIR-Brand-Logo-White.png" alt="MUSAFIR Logo" class="h-11 w-auto">
+          </a>
+          <p class="text-xs text-[#D6A63A] tracking-[0.2em] font-semibold uppercase mb-3" data-i18n="footer_tagline">FAITH • REMEMBRANCE • PURPOSE</p>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-md" data-i18n="footer_desc">
+            Musafir is dedicated to reviving Islamic values in modern daily living through pure, aesthetic, and meaningful lifestyle products.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-[#D6A63A] mb-4" data-i18n="footer_quick_links">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm text-gray-300">
+            <li><a href="index.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_home">Home</a></li>
+            <li><a href="shop.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_shop">Shop</a></li>
+            <li><a href="about.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_about">About</a></li>
+            <li><a href="contact.html" class="hover:text-[#D6A63A] transition" data-i18n="nav_contact">Contact</a></li>
+            <li><a href="admin.html" class="hover:text-[#D6A63A] transition text-gray-400" data-i18n="nav_admin">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Customer Care & Socials -->
+        <div>
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-[#D6A63A] mb-4" data-i18n="footer_customer_service">Customer Care</h4>
+          <p class="text-sm text-gray-300 mb-2">Dhaka, Bangladesh</p>
+          <p class="text-sm text-[#D6A63A] font-semibold mb-4">Hotline: 01700-000000</p>
+          
+          <!-- Social Icons -->
+          <div class="flex items-center space-x-3 mt-4">
+            <!-- Facebook link specified by user -->
+            <a href="https://www.facebook.com/profile.php?id=61564925019564" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-900 border border-[#D6A63A]/30 flex items-center justify-center text-gray-300 hover:text-[#D6A63A] hover:border-[#D6A63A] transition" title="Facebook">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/musafir.zh" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-900 border border-[#D6A63A]/30 flex items-center justify-center text-gray-300 hover:text-[#D6A63A] hover:border-[#D6A63A] transition" title="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-900 border border-[#D6A63A]/30 flex items-center justify-center text-gray-300 hover:text-[#D6A63A] hover:border-[#D6A63A] transition" title="YouTube">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-gray-900 border border-[#D6A63A]/30 flex items-center justify-center text-gray-300 hover:text-[#D6A63A] hover:border-[#D6A63A] transition" title="TikTok">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <p data-i18n="footer_copyright">© 2025 MUSAFIR. All rights reserved.</p>
+        <div class="flex items-center gap-2 text-[#D6A63A]">
+          <span>✦</span>
+          <span class="text-gray-400">Design & Developed by <a href="https://mdziaulhasan.com/" target="_blank" class="text-[#D6A63A] hover:underline font-medium">MD. Ziaul Hasan</a></span>
+          <span>✦</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       CART SLIDE-OVER DRAWER
+       ========================================================================== -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="drawer-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="drawer-content fixed top-0 right-0 w-full max-w-md h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-[#DED7C8] flex items-center justify-between bg-[#081018] text-white">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="text-base font-semibold" data-i18n="cart_title">Shopping Cart</h3>
+        </div>
+        <button id="close-cart-btn" class="text-gray-300 hover:text-white p-1">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Cart Items List Container -->
+      <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-3">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Empty Cart Message -->
+      <div id="cart-empty-message" class="flex-1 flex flex-col items-center justify-center p-8 text-center text-gray-400">
+        <div class="w-16 h-16 rounded-full bg-[#F7F1E4] flex items-center justify-center mb-4 text-[#D6A63A]">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        </div>
+        <p class="text-base font-medium text-gray-600 mb-2" data-i18n="cart_empty">Your cart is empty</p>
+        <p class="text-xs text-gray-400 max-w-xs">Explore our blessed collection and add your favorite items to cart.</p>
+        <a href="shop.html" class="mt-6 px-6 py-2.5 rounded-lg bg-[#081018] text-[#F3D58A] text-sm font-semibold hover:bg-black transition">Explore Shop</a>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div id="cart-drawer-footer" class="p-5 border-t border-[#DED7C8] bg-[#FCFBF7] hidden">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-sm text-gray-600 font-medium" data-i18n="cart_subtotal">Subtotal</span>
+          <span id="cart-drawer-subtotal" class="text-lg font-bold text-[#171717]">৳ 0</span>
+        </div>
+        
+        <div class="space-y-2.5">
+          <!-- WhatsApp Order Button -->
+          <button id="cart-wa-checkout-btn" class="w-full py-3 px-4 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-md transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.087-.179.182-.077.357.101.174.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+            <span data-i18n="cart_checkout_wa">Order via WhatsApp</span>
+          </button>
+
+          <!-- Direct Checkout Link -->
+          <a href="cart.html" class="w-full py-3 px-4 rounded-lg btn-navy text-center block font-semibold text-sm hover:border-[#D6A63A] transition">
+            <span data-i18n="cart_checkout_direct">Proceed to Checkout</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SEARCH MODAL
+       ========================================================================== -->
+  <div id="search-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="fixed top-24 left-1/2 -translate-x-1/2 w-full max-w-2xl px-4 z-10">
+      <div class="bg-white rounded-xl shadow-2xl overflow-hidden border border-[#DED7C8]">
+        <div class="p-4 border-b border-gray-100 flex items-center gap-3">
+          <svg class="w-5 h-5 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="site-search-input" placeholder="Search Islamic products, Quran, Tasbih..." class="w-full text-base outline-none bg-transparent text-[#171717]" data-i18n="search_placeholder">
+          <button id="close-search-btn" class="text-gray-400 hover:text-gray-700 p-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div id="search-results-list" class="max-h-96 overflow-y-auto p-2">
+          <!-- Live results injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AUTH & FIREBASE USER MODAL (Google, Email/Password, Registration, Profile)
+       ========================================================================== -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4 z-10 pointer-events-none">
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 sm:p-8 border border-[#DED7C8] relative pointer-events-auto max-h-[92vh] overflow-y-auto">
+        
+        <button id="close-auth-btn" onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <!-- Brand Header -->
+        <div class="text-center mb-6">
+          <img src="assets/images/musafir-logo-dark.webp" alt="MUSAFIR" class="h-14 sm:h-16 w-auto mx-auto mb-3 object-contain">
+          <h3 id="auth-modal-heading" class="text-xl font-serif font-bold text-[#171717]" data-i18n="auth_title">Welcome to Musafir</h3>
+          <p id="auth-modal-subheading" class="text-xs text-gray-500 mt-1" data-i18n="auth_subtitle">Access your orders, wishlist, and exclusive Islamic offerings</p>
+        </div>
+
+        <!-- LOGGED-IN VIEW (Shown when user is logged in) -->
+        <div id="auth-logged-in-view" class="hidden text-center space-y-4">
+          <div class="w-20 h-20 rounded-full mx-auto border-2 border-[#D6A63A] p-0.5 overflow-hidden bg-gray-100 flex items-center justify-center shadow-md">
+            <img id="auth-user-photo" src="" alt="User Avatar" class="w-full h-full object-cover hidden">
+            <span id="auth-user-initial" class="text-2xl font-serif font-bold text-[#D6A63A]">M</span>
+          </div>
+          <div>
+            <h4 id="auth-user-name" class="font-bold text-base text-[#171717]">User Name</h4>
+            <p id="auth-user-email" class="text-xs text-gray-500">user@email.com</p>
+            <span id="auth-user-provider" class="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#F7F1E4] text-[#D6A63A] border border-[#DED7C8]">Signed In via Google</span>
+          </div>
+          
+          <div class="pt-2 flex flex-col gap-2">
+            <a href="shop.html" onclick="closeAuthModal()" class="w-full py-2.5 px-4 rounded-lg bg-[#F7F1E4] hover:bg-[#D6A63A]/20 text-[#081018] font-semibold text-xs transition flex items-center justify-center gap-1.5">
+              <span>🛍️ Continue Shopping (কেনাকাটা করুন)</span>
+            </a>
+            <button id="auth-signout-btn" onclick="handleFirebaseSignOut()" class="w-full py-2.5 px-4 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 font-semibold text-xs transition">
+              Sign Out (লগআউট)
+            </button>
+          </div>
+        </div>
+
+        <!-- LOGGED-OUT VIEW (Login, Register & Forgot Password) -->
+        <div id="auth-logged-out-view">
+          
+          <!-- Google Sign-In Button -->
+          <button id="google-signin-btn" class="w-full py-3 px-4 border border-gray-300 rounded-lg shadow-sm flex items-center justify-center gap-3 bg-white hover:bg-gray-50 transition text-sm font-semibold text-gray-700">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/>
+              <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/>
+              <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.8s.2-2.1.4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/>
+              <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16C3.7 20.4 7.5 23 12 23z"/>
+            </svg>
+            <span data-i18n="auth_google">Continue with Google</span>
+          </button>
+
+          <div class="relative my-4">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
+            <div class="relative flex justify-center text-xs uppercase"><span class="bg-white px-2 text-gray-400 font-semibold" data-i18n="auth_or">OR</span></div>
+          </div>
+
+          <!-- Auth Mode Tabs (Sign In / Register) -->
+          <div class="flex border-b border-gray-200 mb-4 text-xs font-bold">
+            <button type="button" id="tab-auth-login" onclick="switchAuthTab('login')" class="flex-1 pb-2 border-b-2 border-[#D6A63A] text-[#171717] transition text-center">
+              Sign In (লগইন)
+            </button>
+            <button type="button" id="tab-auth-register" onclick="switchAuthTab('register')" class="flex-1 pb-2 border-b-2 border-transparent text-gray-400 hover:text-gray-700 transition text-center">
+              Create Account (নিবন্ধন)
+            </button>
+          </div>
+
+          <!-- SIGN IN FORM -->
+          <form id="auth-login-form" onsubmit="handleEmailPasswordLogin(event)" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_email">Email Address</label>
+              <input type="email" id="login-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-semibold text-gray-700" data-i18n="auth_password">Password</label>
+                <button type="button" onclick="switchAuthTab('forgot')" class="text-[11px] text-[#D6A63A] hover:underline font-medium">Forgot Password?</button>
+              </div>
+              <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <button type="submit" class="btn-navy w-full py-3 rounded-lg text-sm font-semibold shadow hover:bg-black transition flex items-center justify-center gap-2">
+              <span data-i18n="auth_login_btn">Sign In</span>
+            </button>
+          </form>
+
+          <!-- REGISTER FORM -->
+          <form id="auth-register-form" onsubmit="handleEmailPasswordRegister(event)" class="space-y-3.5 hidden">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name (পূর্ণ নাম)</label>
+              <input type="text" id="reg-name" required placeholder="MD. Ziaul Hasan" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_email">Email Address</label>
+              <input type="email" id="reg-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_password">Password (নূন্যতম ৬ অক্ষর)</label>
+              <input type="password" id="reg-password" required minlength="6" placeholder="••••••••" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <button type="submit" class="btn-gold w-full py-3 rounded-lg text-sm font-bold shadow hover:bg-[#b88c2c] transition flex items-center justify-center gap-2 text-[#081018]">
+              <span>Create Account (একাউন্ট তৈরি করুন)</span>
+            </button>
+          </form>
+
+          <!-- FORGOT PASSWORD FORM -->
+          <form id="auth-forgot-form" onsubmit="handleForgotPassword(event)" class="space-y-3.5 hidden">
+            <p class="text-xs text-gray-600">আপনার ইমেইল দিন, আমরা পাসওয়ার্ড রিসেট করার লিঙ্ক পাঠিয়ে দেব।</p>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="auth_email">Email Address</label>
+              <input type="email" id="forgot-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <button type="submit" class="btn-navy w-full py-2.5 rounded-lg text-xs font-semibold shadow hover:bg-black transition">
+              Send Password Reset Link (রিসেট লিঙ্ক পাঠান)
+            </button>
+            <div class="text-center pt-2">
+              <button type="button" onclick="switchAuthTab('login')" class="text-xs text-[#D6A63A] hover:underline font-semibold">
+                ← Back to Sign In (লগইনে ফিরুন)
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       QUICK WHATSAPP ORDER MODAL
+       ========================================================================== -->
+  <div id="quick-order-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuickOrderModal()"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4 z-10">
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6 sm:p-8 border border-[#DED7C8] relative max-h-[90vh] overflow-y-auto">
+        
+        <button onclick="closeQuickOrderModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-[#25D366]/15 text-[#25D366] flex items-center justify-center">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.087-.179.182-.077.357.101.174.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-[#171717]">অর্ডার কনফার্ম করুন (WhatsApp)</h3>
+            <p class="text-xs text-gray-500">আপনার তথ্য দিন, মেসেজটি সরাসরি আমাদের হোয়াটসঅ্যাপে ওপেন হবে।</p>
+          </div>
+        </div>
+
+        <form onsubmit="submitWhatsAppOrder(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="checkout_name">Full Name</label>
+            <input type="text" id="order-name" required placeholder="আপনার নাম লিখুন" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="checkout_phone">Phone Number</label>
+            <input type="tel" id="order-phone" required placeholder="০১XXXXXXXXX" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="checkout_area">Delivery Area</label>
+            <select id="order-area" class="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none bg-white">
+              <option value="dhaka">ঢাকার ভেতরে (ডেলিভারি চার্জ: ৳৭০)</option>
+              <option value="outside">ঢাকার বাইরে (ডেলিভারি চার্জ: ৳১৩০)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="checkout_address">Delivery Address</label>
+            <textarea id="order-address" required rows="2" placeholder="বাড়ি নং, রোড, থানা, জেলা..." class="w-full px-3.5 py-2 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1" data-i18n="checkout_notes">Special Instructions (Optional)</label>
+            <input type="text" id="order-notes" placeholder="যেমন: বিকেল ৫টার পর ডেলিভারি দিন" class="w-full px-3.5 py-2 border border-gray-300 rounded-lg text-sm focus:border-[#D6A63A] focus:outline-none">
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-4 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.087-.179.182-.077.357.101.174.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+            <span data-i18n="order_wa_btn">Send Order via WhatsApp</span>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/8801700000000?text=Salam%20Musafir,%20I%20have%20an%20inquiry%20about%20your%20Islamic%20lifestyle%20products." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 left-6 z-40 w-13 h-13 rounded-full bg-[#25D366] text-white p-3 shadow-2xl whatsapp-pulse flex items-center justify-center hover:scale-105 transition" title="Chat on WhatsApp">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.087-.179.182-.077.357.101.174.449.741.964 1.2.662.59 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+  </a>
+
+  <!-- Application Scripts -->
+    <!-- Firebase App & Services (v10 Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/seed-data.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

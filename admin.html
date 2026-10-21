@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — MUSAFIR Islamic Lifestyle</title>
+  <link rel="icon" type="image/webp" href="assets/images/MUSAFIR BRAND Icon.webp">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#FCFBF7',
+              100: '#F7F1E4',
+              500: '#D6A63A',
+              800: '#171717',
+              900: '#081018',
+              950: '#030609'
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            bn: ['Hind Siliguri', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#F8F9FA] text-[#171717] min-h-screen flex flex-col font-sans">
+
+  <!-- Top Navigation -->
+  <header class="bg-[#081018] text-white border-b border-[#D6A63A]/20 py-4 px-6 sticky top-0 z-30 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/musafir-logo.webp" alt="MUSAFIR" class="h-9 w-auto object-contain">
+        <span class="text-xs bg-[#D6A63A] text-[#081018] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Admin Dashboard</span>
+      </div>
+      <div class="flex items-center gap-5 text-xs font-semibold">
+        <a href="index.html" class="text-gray-300 hover:text-[#D6A63A] transition flex items-center gap-1.5">
+          <span>View Live Store</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow p-4 sm:p-8 max-w-7xl mx-auto w-full">
+    
+    <!-- Action Header -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-serif font-bold text-[#171717]">Product & Category Management</h1>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1">Manage multiple gallery images, stock status, product highlights & categories.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <button id="open-categories-modal-btn" class="px-4 py-2.5 rounded-lg border border-[#D6A63A] bg-white text-[#081018] hover:bg-[#F7F1E4] text-xs font-bold transition flex items-center gap-2 shadow-sm">
+          <span>📁 Manage Categories (ক্যাটাগরি)</span>
+        </button>
+
+        <button onclick="syncCatalogToFirebase()" class="px-4 py-2.5 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 text-xs font-bold transition flex items-center gap-1.5 shadow-sm" title="Upload all local products & categories to Firebase Cloud">
+          <span>☁ Sync to Cloud (ফায়ারবেস সিঙ্ক)</span>
+        </button>
+
+        <button onclick="resetSeedData()" class="px-3.5 py-2.5 rounded-lg border border-gray-300 text-xs font-semibold text-gray-600 bg-white hover:bg-gray-50 transition" title="Restore default seed catalog">
+          ↺ Reset Defaults
+        </button>
+
+        <button id="open-add-product-modal-btn" class="btn-navy px-5 py-2.5 rounded-lg text-xs font-bold shadow hover:bg-black transition flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#D6A63A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span>Add New Product (নতুন পণ্য)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status Banner -->
+    <div id="admin-storage-banner" class="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
+      <span class="text-emerald-600 text-lg">☁</span>
+      <div class="text-xs text-emerald-900 leading-relaxed">
+        <strong>Firebase Cloud Connected:</strong> Project ID <code>musafir-a3772</code> সফলভাবে যুক্ত হয়েছে। ক্লাউড ফায়ারস্টোর ও লোকাল স্টোরেজে স্বয়ংক্রিয়ভাবে ডাটা সিঙ্ক হচ্ছে। আপনার বর্তমান সব প্রোডাক্ট ও ক্যাটাগরি ফায়ারবেস ক্লাউডে তাৎক্ষণিক আপলোড করতে উপরের <strong>"Sync to Cloud"</strong> বাটনে ক্লিক করুন।
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+        <span class="text-[11px] text-gray-500 font-semibold uppercase">Total Products</span>
+        <div id="stat-total-products" class="text-xl font-bold text-[#171717] mt-1">0</div>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+        <span class="text-[11px] text-gray-500 font-semibold uppercase">Categories</span>
+        <div id="stat-total-categories" class="text-xl font-bold text-[#171717] mt-1">0</div>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+        <span class="text-[11px] text-gray-500 font-semibold uppercase text-emerald-600">In Stock</span>
+        <div id="stat-in-stock" class="text-xl font-bold text-emerald-700 mt-1">0</div>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+        <span class="text-[11px] text-gray-500 font-semibold uppercase text-red-500">Out of Stock</span>
+        <div id="stat-out-stock" class="text-xl font-bold text-red-600 mt-1">0</div>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm col-span-2 sm:col-span-1">
+        <span class="text-[11px] text-gray-500 font-semibold uppercase text-[#D6A63A]">Catalog Value</span>
+        <div id="stat-total-value" class="text-xl font-bold text-[#D6A63A] mt-1">৳ 0</div>
+      </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="relative w-full sm:w-80">
+        <input type="text" id="admin-search-input" placeholder="Search by title or category..." class="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none">
+        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <span class="text-xs text-gray-500 font-medium">Stock Filter:</span>
+        <select id="admin-stock-filter" class="px-3 py-1.5 border border-gray-300 rounded-lg text-xs font-semibold bg-white text-gray-700 focus:border-[#D6A63A] focus:outline-none">
+          <option value="all">All Products (সকল পণ্য)</option>
+          <option value="in-stock">In Stock Only (স্টকে আছে)</option>
+          <option value="out-stock">Out of Stock (স্টক শেষ)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Table -->
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <div class="p-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+        <h3 class="font-bold text-sm text-[#171717]">Inventory Catalog</h3>
+        <span class="text-xs text-gray-400">Click stock or popular badge to toggle instantly</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-gray-200 text-[11px] uppercase tracking-wider text-gray-500 font-semibold bg-gray-50">
+              <th class="py-3 px-4">#</th>
+              <th class="py-3 px-4">Product Details</th>
+              <th class="py-3 px-4">Category</th>
+              <th class="py-3 px-4">Price</th>
+              <th class="py-3 px-4 text-center">Featured</th>
+              <th class="py-3 px-4 text-center">Stock Status & Qty</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-products-table-body">
+            <!-- Injected by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       PRODUCT ADD / EDIT MODAL (With Gallery & Stock)
+       ========================================================================== -->
+  <div id="product-form-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="document.getElementById('product-form-modal').classList.add('hidden')"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4 z-10 pointer-events-none">
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6 sm:p-8 border border-gray-200 relative max-h-[92vh] overflow-y-auto pointer-events-auto">
+        
+        <button id="close-product-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <h3 id="modal-form-title" class="text-xl font-bold text-[#171717] mb-6">Add New Islamic Product</h3>
+
+        <form id="admin-product-form" class="space-y-6">
+          <input type="hidden" id="form-item-id">
+
+          <!-- Section 1: Basic Information -->
+          <div class="space-y-4">
+            <h4 class="text-xs uppercase font-bold tracking-wider text-[#D6A63A] border-b pb-1">১. সাধারণ তথ্য (Basic Info)</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Title (English) *</label>
+                <input type="text" id="form-title-en" required placeholder="e.g. Premium Tasbih" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Title (বাংলা) *</label>
+                <input type="text" id="form-title-bn" placeholder="যেমন: প্রিমিয়াম অনিক্স তসবিহ" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Category (ক্যাটাগরি) *</label>
+                <select id="form-category" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs bg-white focus:border-[#D6A63A] focus:outline-none">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Selling Price (৳ বিক্রয় মূল্য) *</label>
+                <input type="number" id="form-price" required placeholder="550" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Regular Price (৳ নিয়মিত মূল্য)</label>
+                <input type="number" id="form-original-price" placeholder="650" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Stock & Inventory Management -->
+          <div class="space-y-4 pt-2">
+            <h4 class="text-xs uppercase font-bold tracking-wider text-[#D6A63A] border-b pb-1">২. স্টক ও উপস্থিতি (Stock & Inventory)</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" id="form-instock-toggle" checked class="w-5 h-5 text-[#D6A63A] focus:ring-[#D6A63A] rounded border-gray-300 cursor-pointer">
+                <div>
+                  <label for="form-instock-toggle" class="text-xs font-bold text-gray-800 cursor-pointer block">In Stock Status (পণ্য স্টকে আছে)</label>
+                  <span class="text-[11px] text-gray-500">টিক চিহ্ন উঠিয়ে দিলে "Out of Stock" দেখাবে</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Stock Quantity (কতোটি অবশিষ্ট আছে)</label>
+                <input type="number" id="form-stock-quantity" min="0" value="25" placeholder="25" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none bg-white">
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="form-popular" class="w-4 h-4 text-[#D6A63A] focus:ring-[#D6A63A] rounded border-gray-300 cursor-pointer">
+              <label for="form-popular" class="text-xs font-semibold text-gray-700 cursor-pointer">Mark as Popular / Best Seller (হোমপেজে স্পেশাল ফিচার করুন)</label>
+            </div>
+          </div>
+
+          <!-- Section 3: Main Thumbnail & Unlimited Gallery Images -->
+          <div class="space-y-4 pt-2">
+            <h4 class="text-xs uppercase font-bold tracking-wider text-[#D6A63A] border-b pb-1">৩. ছবি ও গ্যালারি (Main Thumbnail & Gallery Images)</h4>
+            
+            <!-- Main Image -->
+            <div class="p-4 bg-amber-50/60 rounded-xl border border-amber-200">
+              <label class="block text-xs font-bold text-gray-800 mb-1">Main Thumbnail Image (মেইন ফিচার ছবি) *</label>
+              <div class="flex items-center gap-3">
+                <div class="w-14 h-14 rounded-lg border border-[#DED7C8] bg-white overflow-hidden flex-shrink-0 flex items-center justify-center">
+                  <img id="main-thumbnail-preview" src="assets/images/product-quran.jpg" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                  <input type="text" id="form-main-image" placeholder="assets/images/product-quran.jpg" class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none bg-white">
+                </div>
+                <label class="px-3 py-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 text-xs font-semibold text-gray-700 cursor-pointer">
+                  <span>Browse</span>
+                  <input type="file" id="form-main-image-file" accept="image/*" class="hidden">
+                </label>
+              </div>
+              <span class="text-[10px] text-gray-500 mt-1 block">এই ছবিটি প্রোডাক্ট কার্ডে ও ডিটেইলস পেজের প্রধান ছবিতে বড় করে শো করবে।</span>
+            </div>
+
+            <!-- Extra Gallery Images -->
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <div>
+                  <label class="text-xs font-bold text-gray-800">Additional Gallery Images (অতিরিক্ত ছবিসমূহ)</label>
+                  <p class="text-[11px] text-gray-500">নিচের থাম্বনেইলে ক্লিক করলে মূল ছবিতে দৃশ্যমান হবে (৫, ৬ বা ১০টি ছবি যোগ করতে পারেন)</p>
+                </div>
+                <button type="button" id="add-gallery-image-btn" class="px-3 py-1.5 rounded-lg border border-[#D6A63A] text-xs font-bold text-[#D6A63A] hover:bg-[#D6A63A] hover:text-[#081018] transition flex items-center gap-1 shadow-sm">
+                  <span>+ Add Gallery Image (ছবি যোগ)</span>
+                </button>
+              </div>
+
+              <!-- Gallery list injected dynamically -->
+              <div id="gallery-images-container" class="space-y-2 max-h-56 overflow-y-auto pr-1">
+                <!-- Injected by admin.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Key Highlights & Selling Points -->
+          <div class="space-y-4 pt-2">
+            <h4 class="text-xs uppercase font-bold tracking-wider text-[#D6A63A] border-b pb-1">৪. বিশেষ সুবিধাসমূহ / পয়েন্ট (Key Highlights)</h4>
+            <p class="text-[11px] text-gray-500">এই প্রোডাক্টটি কেন ভালো? প্রতি লাইনে একটি করে আকর্ষণীয় পয়েন্ট লিখুন, যা প্রোডাক্ট পেজে গোল্ডেন চেকমার্কসহ শো করবে:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Key Points (English - 1 per line)</label>
+                <textarea id="form-highlights-en" rows="3" placeholder="100% Genuine Handcrafted Onyx&#10;Smooth Silk Tassel with Dividers&#10;7 Days Replacement Guarantee" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">বিশেষ সুবিধাসমূহ (বাংলা - প্রতি লাইনে একটি)</label>
+                <textarea id="form-highlights-bn" rows="3" placeholder="১০০% খাঁটি প্রাকৃতিক মসৃণ ব্ল্যাক অনিক্স&#10;জিকিরের জন্য আরামদায়ক আঙ্গুল সঞ্চালন&#10;৭ দিনের ক্যাশ অন ডেলিভারি সুবিধা" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5: Descriptions & Specifications -->
+          <div class="space-y-4 pt-2">
+            <h4 class="text-xs uppercase font-bold tracking-wider text-[#D6A63A] border-b pb-1">৫. বিস্তারিত বিবরণ ও স্পেসিফিকেশন (Descriptions & Specs)</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Short Description (English)</label>
+                <textarea id="form-short-en" rows="2" placeholder="Brief summary for product card..." class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">সংক্ষিপ্ত বিবরণ (বাংলা)</label>
+                <textarea id="form-short-bn" rows="2" placeholder="প্রোডাক্ট কার্ডে দেখানোর সংক্ষিপ্ত বিবরণ..." class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none"></textarea>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">Full Detailed Description (English)</label>
+                <textarea id="form-desc-en" rows="3" placeholder="Comprehensive product details..." class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none"></textarea>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-1">সম্পূর্ণ বিবরণ (বাংলা)</label>
+                <textarea id="form-desc-bn" rows="3" placeholder="বিস্তারিত পণ্যের বিবরণ..." class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none"></textarea>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Specifications (বৈশিষ্ট্য - প্রতি লাইনে "নাম: মান" লিখুন)</label>
+              <textarea id="form-specs" rows="3" placeholder="Material: Natural Onyx&#10;Origin: Turkey&#10;দানা: ৯৯ টি&#10;সুবিধা: ওয়াটারপ্রুফ" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-xs focus:border-[#D6A63A] focus:outline-none font-mono"></textarea>
+            </div>
+          </div>
+
+          <!-- Submit Buttons -->
+          <div class="pt-4 flex justify-end gap-3 border-t border-gray-200">
+            <button type="button" onclick="document.getElementById('product-form-modal').classList.add('hidden')" class="px-5 py-2.5 border border-gray-300 rounded-lg text-xs font-semibold text-gray-600 hover:bg-gray-50">Cancel</button>
+            <button type="submit" class="btn-navy px-7 py-2.5 rounded-lg text-xs font-bold hover:bg-black shadow">Save Product (সংরক্ষণ করুন)</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CATEGORY MANAGEMENT MODAL (ক্যাটাগরি ম্যানেজমেন্ট ও এডিট)
+       ========================================================================== -->
+  <div id="category-manager-modal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="document.getElementById('category-manager-modal').classList.add('hidden')"></div>
+    <div class="fixed inset-0 flex items-center justify-center p-4 z-10 pointer-events-none">
+      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6 sm:p-8 border border-gray-200 relative max-h-[90vh] overflow-y-auto pointer-events-auto">
+        
+        <button id="close-category-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <h3 class="text-xl font-bold text-[#171717] mb-2">Category Management (ক্যাটাগরি ব্যবস্থাপনা)</h3>
+        <p class="text-xs text-gray-500 mb-6">নতুন ক্যাটাগরি তৈরি করুন, ক্যাটাগরির নাম ও ছবি এডিট করুন।</p>
+
+        <!-- Category Create / Edit Form -->
+        <form id="admin-category-form" class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6 space-y-3">
+          <div class="flex items-center justify-between mb-1">
+            <h4 id="cat-form-title" class="text-xs font-bold uppercase tracking-wider text-[#D6A63A]">Add New Category</h4>
+            <button type="button" id="cat-cancel-edit-btn" onclick="cancelCategoryEdit()" class="text-xs text-gray-500 hover:text-red-500 hidden">Cancel Edit</button>
+          </div>
+
+          <input type="hidden" id="form-cat-id">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Category Name (English) *</label>
+              <input type="text" id="form-cat-name-en" required placeholder="e.g. Prayer Essentials" class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-xs bg-white focus:border-[#D6A63A] focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">ক্যাটাগরির নাম (বাংলা) *</label>
+              <input type="text" id="form-cat-name-bn" required placeholder="যেমন: নামাজের অনুষঙ্গ" class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-xs bg-white focus:border-[#D6A63A] focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1">Category Image / Icon URL</label>
+            <div class="flex items-center gap-2">
+              <input type="text" id="form-cat-image" placeholder="assets/images/product-quran.jpg" class="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-xs bg-white focus:border-[#D6A63A] focus:outline-none">
+              <label class="px-3 py-1.5 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 text-xs font-semibold text-gray-700 cursor-pointer flex-shrink-0">
+                <span>Upload</span>
+                <input type="file" id="form-cat-image-file" accept="image/*" class="hidden">
+              </label>
+            </div>
+          </div>
+
+          <div class="flex justify-end pt-1">
+            <button type="submit" class="btn-navy px-5 py-2 rounded-lg text-xs font-bold hover:bg-black shadow">Save Category</button>
+          </div>
+        </form>
+
+        <!-- Existing Categories List -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">Existing Categories</h4>
+          <div id="category-items-list" class="space-y-2.5 max-h-72 overflow-y-auto pr-1">
+            <!-- Injected by admin.js -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Firebase App & Services (v10 Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/seed-data.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

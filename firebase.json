@@ -1,0 +1,18 @@
+{
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "MUSAFIR Islamic Lifestyle",
+        "supportEmail": "support@musafirlifestyle.com",
+        "authorizedRedirectUris": [
+          "https://musafir-a3772.firebaseapp.com/__/auth/handler",
+          "http://localhost:8080",
+          "http://localhost:5000",
+          "http://localhost:3000",
+          "http://localhost"
+        ]
+      }
+    }
+  }
+}

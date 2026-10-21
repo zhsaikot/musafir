@@ -1,0 +1,233 @@
+/* ==========================================================================
+   MUSAFIR - Islamic Lifestyle E-commerce
+   Design System & Custom Styles
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-obsidian: #030609;
+  --color-midnight: #081018;
+  --color-gold: #D6A63A;
+  --color-gold-light: #F3D58A;
+  --color-cream: #F7F1E4;
+  --color-offwhite: #FCFBF7;
+  --color-charcoal: #171717;
+  --color-muted: #666666;
+  --color-border: #DED7C8;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-bengali: 'Hind Siliguri', 'Inter', sans-serif;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-offwhite);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bengali font application when bn is active */
+html[lang="bn"] body,
+html[lang="bn"] .font-ui {
+  font-family: var(--font-bengali);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-bn {
+  font-family: var(--font-bengali);
+}
+
+/* Brand Gold Accents */
+.text-gold {
+  color: var(--color-gold);
+}
+.bg-gold {
+  background-color: var(--color-gold);
+}
+.border-gold {
+  border-color: var(--color-gold);
+}
+
+.text-gold-light {
+  color: var(--color-gold-light);
+}
+
+.bg-midnight {
+  background-color: var(--color-midnight);
+}
+
+.bg-obsidian {
+  background-color: var(--color-obsidian);
+}
+
+.bg-cream {
+  background-color: var(--color-cream);
+}
+
+.bg-offwhite {
+  background-color: var(--color-offwhite);
+}
+
+.border-beige {
+  border-color: var(--color-border);
+}
+
+/* Islamic Geometric & Arabesque subtle patterns */
+.bg-islamic-pattern {
+  background-image: radial-gradient(#D6A63A 0.75px, transparent 0.75px), radial-gradient(#D6A63A 0.75px, #F7F1E4 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.15;
+}
+
+.arabesque-border {
+  position: relative;
+}
+.arabesque-border::before,
+.arabesque-border::after {
+  content: "✦";
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  margin: 0 0.5rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #081018;
+}
+::-webkit-scrollbar-thumb {
+  background: #D6A63A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F3D58A;
+}
+
+/* Smooth Interactive Cards */
+.product-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+  box-shadow: 0 12px 28px -6px rgba(8, 16, 24, 0.08), 0 0 1px 1px rgba(214, 166, 58, 0.25);
+}
+
+.category-card {
+  transition: all 0.25s ease;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+}
+.category-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
+  background-color: #fdfbf7;
+  box-shadow: 0 8px 20px rgba(214, 166, 58, 0.12);
+}
+
+/* Gold Gradient Button */
+.btn-gold {
+  background-color: var(--color-gold);
+  color: #081018;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.btn-gold:hover {
+  background-color: #e5b342;
+  box-shadow: 0 4px 14px rgba(214, 166, 58, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-navy {
+  background-color: var(--color-midnight);
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+.btn-navy:hover {
+  background-color: #030609;
+  border-color: var(--color-gold);
+}
+
+/* Glassmorphism Navigation */
+.header-sticky {
+  background-color: rgba(8, 16, 24, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Toast Notification */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+.toast-msg {
+  pointer-events: auto;
+  animation: toastSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes toastSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal and Drawer transitions */
+.drawer-backdrop {
+  transition: opacity 0.3s ease;
+}
+.drawer-content {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Floating WhatsApp pulse effect */
+.whatsapp-pulse {
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  animation: pulse-green 2s infinite;
+}
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
